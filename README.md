@@ -1,5 +1,15 @@
 # Digi18
-Digi18 protocol
 
-Scripts use compiled from proto/Digi18Com.proto file bin/Digi18Com_pb2.py. To  make it use next command from the root of the project:
-protoc --python_out=bin/Digi18Com_pb2.py proto/Digi18Com.proto
+This project is intended to emulate host PC requests via Digi18 protocol
+
+# Install
+
+# Compile
+If you changed proto/Digi18Com.proto file then new bin/Digi18Com_pb2.py should be compiled. How to do it (and also some additional information) can be found here https://developers.google.com/protocol-buffers/docs/pythontutorial
+## Unbuntu
+run build/compile_proto.sh to compile it in Linux
+
+## Windows
+
+# Run
+execute COMHost.py script. COM port settings can be found in the script itself.
