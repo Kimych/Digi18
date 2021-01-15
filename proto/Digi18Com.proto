@@ -6,9 +6,11 @@
 *
 * Created on: 19.01.2018
 * Update on: 02.01.2018
-* V2 9.11.2020 : Removal of extensions in messages response and request,
-*                Removal of ClimatisationInfo because not used,
-*				         Including CurFilterNumber in DevicStatus
+* V2  6.11.2020 : Removal of extensions in messages response and request
+* V3  9.11.2020 : Removal of ClimatisationInfo because not used
+*				  Including CurFilterNumber in DevicStatus
+* V4 10.12.2020 : Including SamplingTime in DevicStatus
+                  Including Volume in FlowInfo
 */
 syntax = "proto2";
 // import option descriptor used to define our own options
@@ -192,7 +194,8 @@ message FlowInfo {
   optional float temperature = 1 [(unit) = CELSIUS_DEGREE]; // current temperature
   optional float pressure = 2 [(unit) = HPA]; // air pressure
   optional float flow_rate = 3 [(unit) = L_MIN]; // flow rate
-  optional bool is_estimated = 4; // if TRUE - estimated values instead of real are used
+  optional float volume = 4 [(unit) = LITER];  //volume
+  optional bool is_estimated = 5; // if TRUE - estimated values instead of real are used
 }
 
 message DevicStatus {
@@ -214,8 +217,9 @@ message DevicStatus {
   optional FlowInfo internal_flow_info = 3;  //  internal flow meter statistics
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
   optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
-  optional ProgramRunInfo program_run_info = 6; // curent run info (together with program statistics)
-  repeated Message new_log_messages = 7; // list of last unread messages
+  optional float SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
+  optional ProgramRunInfo program_run_info = 7; // curent run info (together with program statistics)
+  repeated Message new_log_messages = 8; // list of last unread messages
 }
 
 message Message {

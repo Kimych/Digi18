@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Digi18Com.proto',
   package='digi.pb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"E\n\x07Program\x12$\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x15.digi.pb.ProgramEntry\x12\x14\n\x0cis_continius\x18\x02 \x01(\x08\"\xa1\x01\n\x0cProgramEntry\x12\x1b\n\rwait_duration\x18\x01 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1b\n\rwork_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1c\n\x0epause_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\x12\x16\n\x0enumber_of_runs\x18\x04 \x01(\r\x12!\n\x19is_filter_change_required\x18\x05 \x01(\x08\"\xdd\x01\n\x12\x43onfigurationEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x04type\x18\x02 \x01(\x0e\x32%.digi.pb.ConfigurationEntry.EntryType\x12\x1b\n\x04unit\x18\x03 \x01(\x0e\x32\r.digi.pb.Unit\x12\r\n\x05value\x18\x04 \x01(\t\"X\n\tEntryType\x12\x0b\n\x07INTEGER\x10\x01\x12\t\n\x05\x46LOAT\x10\x02\x12\n\n\x06STRING\x10\x03\x12\x0e\n\nIP_ADDRESS\x10\x04\x12\x08\n\x04\x42OOL\x10\x05\x12\r\n\tTIMESTAMP\x10\x06\"\xc3\x01\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\x12\x16\n\x08start_at\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x1a\n\x12is_prestart_filter\x18\x03 \x01(\x08\x12!\n\x07program\x18\x04 \x01(\x0b\x32\x10.digi.pb.Program\"6\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\x12\x0b\n\x07REQUEST\x10\x03\x12\n\n\x06UPDATE\x10\x04\"^\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"*\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\x12\x16\n\x12\x44ISCHARGE_MAGASINE\x10\x02\"~\n\x06UsbCmd\x12\"\n\x04type\x18\x01 \x01(\x0e\x32\x14.digi.pb.UsbCmd.Type\"P\n\x04Type\x12\x11\n\rUSB_SW_UPDATE\x10\x01\x12\x14\n\x10USB_COPY_INT_MEM\x10\x02\x12\x10\n\x0cUSB_NEW_DATA\x10\x03\x12\r\n\tUSB_EJECT\x10\x04\"\x86\x01\n\x07UsbInfo\x12\x1f\n\x11total_memory_size\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1b\n\rlog_file_size\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1f\n\x11\x63limate_file_size\x18\x03 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1c\n\x0ewind_file_size\x18\x04 \x01(\x03\x42\x04\x80\xb5\x18\x13\"\xf2\x01\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12\x35\n\x10\x63onfig_to_update\x18\n \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12&\n\nfilter_cmd\x18\x0b \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12 \n\x07usb_cmd\x18\x0c \x01(\x0b\x32\x0f.digi.pb.UsbCmd\x12\x16\n\x08sys_time\x18\r \x01(\x03\x42\x04\x80\xb5\x18\x02\"\xc8\x01\n\x0eProgramRunInfo\x12\x15\n\rcurrent_cycle\x18\x01 \x01(\r\x12\x19\n\x11total_n_of_cycles\x18\x02 \x01(\r\x12\x1c\n\x14is_continius_program\x18\x03 \x01(\x08\x12\x13\n\x0b\x63urrent_run\x18\x04 \x01(\r\x12\x17\n\x0ftotal_n_of_runs\x18\x05 \x01(\r\x12\x1c\n\x0e\x65stimated_time\x18\x06 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1a\n\x0c\x65lapsed_time\x18\x07 \x01(\rB\x04\x80\xb5\x18\x04\"l\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x0cis_estimated\x18\x04 \x01(\x08\"\xe9\x03\n\x0b\x44\x65vicStatus\x12\x37\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32!.digi.pb.DevicStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x31\n\x10program_run_info\x18\x06 \x01(\x0b\x32\x17.digi.pb.ProgramRunInfo\x12*\n\x10new_log_messages\x18\x07 \x03(\x0b\x32\x10.digi.pb.Message\"\xb2\x01\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WAIT\x10\x03\x12\x08\n\x04WORK\x10\x04\x12\t\n\x05PAUSE\x10\x05\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x06\x12\x0c\n\x08START_AT\x10\x07\x12\x1a\n\x16PRE_START_FILTER_UNTIL\x10\x08\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\t\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xcb\x02\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12+\n\rdevice_status\x18\t \x01(\x0b\x32\x14.digi.pb.DevicStatus\x12\"\n\x08messages\x18\n \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x0b \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12/\n\nall_config\x18\x0c \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12\"\n\x08usb_info\x18\r \x01(\x0b\x32\x10.digi.pb.UsbInfo\x12$\n\x07program\x18\x0e \x01(\x0b\x32\x13.digi.pb.ProgramCmd* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x02*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERSENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*\xc0\x01\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x16\n\x12\x43LIMATISATION_INFO\x10\x04\x12\x0c\n\x08USB_INFO\x10\x05\x12\x11\n\rCONFIGURATION\x10\x06\x12\x0f\n\x0bPROGRAM_CMD\x10\x07\x12\x0e\n\nFILTER_CMD\x10\x08\x12\x0b\n\x07USB_CMD\x10\t\x12\n\n\x06REPEAT\x10\n\x12\r\n\tTIME_SYNC\x10\x0b:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
+  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"E\n\x07Program\x12$\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x15.digi.pb.ProgramEntry\x12\x14\n\x0cis_continius\x18\x02 \x01(\x08\"\xa1\x01\n\x0cProgramEntry\x12\x1b\n\rwait_duration\x18\x01 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1b\n\rwork_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1c\n\x0epause_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\x12\x16\n\x0enumber_of_runs\x18\x04 \x01(\r\x12!\n\x19is_filter_change_required\x18\x05 \x01(\x08\"\xdd\x01\n\x12\x43onfigurationEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x04type\x18\x02 \x01(\x0e\x32%.digi.pb.ConfigurationEntry.EntryType\x12\x1b\n\x04unit\x18\x03 \x01(\x0e\x32\r.digi.pb.Unit\x12\r\n\x05value\x18\x04 \x01(\t\"X\n\tEntryType\x12\x0b\n\x07INTEGER\x10\x01\x12\t\n\x05\x46LOAT\x10\x02\x12\n\n\x06STRING\x10\x03\x12\x0e\n\nIP_ADDRESS\x10\x04\x12\x08\n\x04\x42OOL\x10\x05\x12\r\n\tTIMESTAMP\x10\x06\"\xc3\x01\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\x12\x16\n\x08start_at\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x1a\n\x12is_prestart_filter\x18\x03 \x01(\x08\x12!\n\x07program\x18\x04 \x01(\x0b\x32\x10.digi.pb.Program\"6\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\x12\x0b\n\x07REQUEST\x10\x03\x12\n\n\x06UPDATE\x10\x04\"^\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"*\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\x12\x16\n\x12\x44ISCHARGE_MAGASINE\x10\x02\"~\n\x06UsbCmd\x12\"\n\x04type\x18\x01 \x01(\x0e\x32\x14.digi.pb.UsbCmd.Type\"P\n\x04Type\x12\x11\n\rUSB_SW_UPDATE\x10\x01\x12\x14\n\x10USB_COPY_INT_MEM\x10\x02\x12\x10\n\x0cUSB_NEW_DATA\x10\x03\x12\r\n\tUSB_EJECT\x10\x04\"\x86\x01\n\x07UsbInfo\x12\x1f\n\x11total_memory_size\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1b\n\rlog_file_size\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1f\n\x11\x63limate_file_size\x18\x03 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1c\n\x0ewind_file_size\x18\x04 \x01(\x03\x42\x04\x80\xb5\x18\x13\"\xf2\x01\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12\x35\n\x10\x63onfig_to_update\x18\n \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12&\n\nfilter_cmd\x18\x0b \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12 \n\x07usb_cmd\x18\x0c \x01(\x0b\x32\x0f.digi.pb.UsbCmd\x12\x16\n\x08sys_time\x18\r \x01(\x03\x42\x04\x80\xb5\x18\x02\"\xc8\x01\n\x0eProgramRunInfo\x12\x15\n\rcurrent_cycle\x18\x01 \x01(\r\x12\x19\n\x11total_n_of_cycles\x18\x02 \x01(\r\x12\x1c\n\x14is_continius_program\x18\x03 \x01(\x08\x12\x13\n\x0b\x63urrent_run\x18\x04 \x01(\r\x12\x17\n\x0ftotal_n_of_runs\x18\x05 \x01(\r\x12\x1c\n\x0e\x65stimated_time\x18\x06 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1a\n\x0c\x65lapsed_time\x18\x07 \x01(\rB\x04\x80\xb5\x18\x04\"\x82\x01\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x06volume\x18\x04 \x01(\x02\x42\x04\x80\xb5\x18\x12\x12\x14\n\x0cis_estimated\x18\x05 \x01(\x08\"\x85\x04\n\x0b\x44\x65vicStatus\x12\x37\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32!.digi.pb.DevicStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x1a\n\x0cSamplingTime\x18\x06 \x01(\x02\x42\x04\x80\xb5\x18\x03\x12\x31\n\x10program_run_info\x18\x07 \x01(\x0b\x32\x17.digi.pb.ProgramRunInfo\x12*\n\x10new_log_messages\x18\x08 \x03(\x0b\x32\x10.digi.pb.Message\"\xb2\x01\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WAIT\x10\x03\x12\x08\n\x04WORK\x10\x04\x12\t\n\x05PAUSE\x10\x05\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x06\x12\x0c\n\x08START_AT\x10\x07\x12\x1a\n\x16PRE_START_FILTER_UNTIL\x10\x08\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\t\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xcb\x02\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12+\n\rdevice_status\x18\t \x01(\x0b\x32\x14.digi.pb.DevicStatus\x12\"\n\x08messages\x18\n \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x0b \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12/\n\nall_config\x18\x0c \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12\"\n\x08usb_info\x18\r \x01(\x0b\x32\x10.digi.pb.UsbInfo\x12$\n\x07program\x18\x0e \x01(\x0b\x32\x13.digi.pb.ProgramCmd* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x02*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERSENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*\xc0\x01\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x16\n\x12\x43LIMATISATION_INFO\x10\x04\x12\x0c\n\x08USB_INFO\x10\x05\x12\x11\n\rCONFIGURATION\x10\x06\x12\x0f\n\x0bPROGRAM_CMD\x10\x07\x12\x0e\n\nFILTER_CMD\x10\x08\x12\x0b\n\x07USB_CMD\x10\t\x12\n\n\x06REPEAT\x10\n\x12\r\n\tTIME_SYNC\x10\x0b:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -39,8 +39,8 @@ _CONSTANT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2800,
-  serialized_end=2832,
+  serialized_start=2851,
+  serialized_end=2883,
 )
 _sym_db.RegisterEnumDescriptor(_CONSTANT)
 
@@ -138,8 +138,8 @@ _UNIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2835,
-  serialized_end=3109,
+  serialized_start=2886,
+  serialized_end=3160,
 )
 _sym_db.RegisterEnumDescriptor(_UNIT)
 
@@ -197,8 +197,8 @@ _ACTIONID = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3112,
-  serialized_end=3304,
+  serialized_start=3163,
+  serialized_end=3355,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONID)
 
@@ -415,8 +415,8 @@ _DEVICSTATUS_SAMPLERSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1950,
-  serialized_end=2128,
+  serialized_start=2001,
+  serialized_end=2179,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICSTATUS_SAMPLERSTATE)
 
@@ -437,8 +437,8 @@ _MESSAGE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2217,
-  serialized_end=2244,
+  serialized_start=2268,
+  serialized_end=2295,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_TYPE)
 
@@ -459,8 +459,8 @@ _CMDRESULT_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2438,
-  serialized_end=2464,
+  serialized_start=2489,
+  serialized_end=2515,
 )
 _sym_db.RegisterEnumDescriptor(_CMDRESULT_STATUS)
 
@@ -952,8 +952,15 @@ _FLOWINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\013'))),
     _descriptor.FieldDescriptor(
-      name='is_estimated', full_name='digi.pb.FlowInfo.is_estimated', index=3,
-      number=4, type=8, cpp_type=7, label=1,
+      name='volume', full_name='digi.pb.FlowInfo.volume', index=3,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\022'))),
+    _descriptor.FieldDescriptor(
+      name='is_estimated', full_name='digi.pb.FlowInfo.is_estimated', index=4,
+      number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -970,8 +977,8 @@ _FLOWINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1528,
-  serialized_end=1636,
+  serialized_start=1529,
+  serialized_end=1659,
 )
 
 
@@ -1018,15 +1025,22 @@ _DEVICSTATUS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='program_run_info', full_name='digi.pb.DevicStatus.program_run_info', index=5,
-      number=6, type=11, cpp_type=10, label=1,
+      name='SamplingTime', full_name='digi.pb.DevicStatus.SamplingTime', index=5,
+      number=6, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\003'))),
+    _descriptor.FieldDescriptor(
+      name='program_run_info', full_name='digi.pb.DevicStatus.program_run_info', index=6,
+      number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='new_log_messages', full_name='digi.pb.DevicStatus.new_log_messages', index=6,
-      number=7, type=11, cpp_type=10, label=3,
+      name='new_log_messages', full_name='digi.pb.DevicStatus.new_log_messages', index=7,
+      number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1044,8 +1058,8 @@ _DEVICSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1639,
-  serialized_end=2128,
+  serialized_start=1662,
+  serialized_end=2179,
 )
 
 
@@ -1090,8 +1104,8 @@ _MESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2130,
-  serialized_end=2244,
+  serialized_start=2181,
+  serialized_end=2295,
 )
 
 
@@ -1135,8 +1149,8 @@ _SYSTEMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2246,
-  serialized_end=2343,
+  serialized_start=2297,
+  serialized_end=2394,
 )
 
 
@@ -1174,8 +1188,8 @@ _CMDRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2345,
-  serialized_end=2464,
+  serialized_start=2396,
+  serialized_end=2515,
 )
 
 
@@ -1254,8 +1268,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2467,
-  serialized_end=2798,
+  serialized_start=2518,
+  serialized_end=2849,
 )
 
 _PROGRAM.fields_by_name['entry'].message_type = _PROGRAMENTRY
@@ -1451,8 +1465,12 @@ _FLOWINFO.fields_by_name['pressure'].has_options = True
 _FLOWINFO.fields_by_name['pressure']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\010'))
 _FLOWINFO.fields_by_name['flow_rate'].has_options = True
 _FLOWINFO.fields_by_name['flow_rate']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\013'))
+_FLOWINFO.fields_by_name['volume'].has_options = True
+_FLOWINFO.fields_by_name['volume']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\022'))
 _DEVICSTATUS.fields_by_name['timestamp'].has_options = True
 _DEVICSTATUS.fields_by_name['timestamp']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
+_DEVICSTATUS.fields_by_name['SamplingTime'].has_options = True
+_DEVICSTATUS.fields_by_name['SamplingTime']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\003'))
 _MESSAGE.fields_by_name['timestamp'].has_options = True
 _MESSAGE.fields_by_name['timestamp']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
 _SYSTEMINFO.fields_by_name['pump_on_duration'].has_options = True
