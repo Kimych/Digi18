@@ -1,182 +1,101 @@
 #!/usr/bin/env python3
 
-import time
-import datetime
 import struct
 from bin import Digi18Com_pb2
 import serial
+from inputimeout import inputimeout
 
-def checksum( arr ):
-   checksum = 0
-   for el in arr:
-       checksum ^= el
-   return checksum
+
+def checksum(arr):
+    checksum = 0
+    for el in arr:
+        checksum ^= el
+    return checksum
+
+
+# Wrap protobuf content into telegram
+def wrap_content(content):
+    header = bytearray()
+    # [HEADER]=[0x1b (1 byte)]+[Protocol version (1 byte)]+[BODY size (2 bytes)]+[Checksum(1 byte)]
+    header += b'\x1b'
+    header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
+    header += struct.pack('>H', len(content))
+    header += struct.pack('>B', checksum(header))
+    # [BODY] = [Content]+[Checksum (1 byte)]
+    header += content
+    header += struct.pack('>B', checksum(content))
+    return header
+
+
+def read_response(serial):
+    # read start byte
+    serial.read()
+    # read version
+    serial.read()
+    # read telegram length
+    length = struct.unpack('>H', serial.read(2))[0]
+    # read XOR byte for the header
+    serial.read()
+    # read the BODY (payload + cs)
+    s = serial.read(length)
+    response = Digi18Com_pb2.Response()
+    response.ParseFromString(s)
+    return response
+
+
+def send_program_cmd(serial, cmd):
+    # request status data
+    request = Digi18Com_pb2.Request()
+    request.action_id = Digi18Com_pb2.PROGRAM_CMD
+    request.program_cmd.type = cmd
+    start = request.SerializeToString()
+    # write to the COM
+    serial.write(wrap_content(start))
+
+
+def send_filter_cmd(serial, cmd):
+    # request status data
+    request = Digi18Com_pb2.Request()
+    request.action_id = Digi18Com_pb2.FILTER_CMD
+    request.filter_cmd.type = cmd
+    start = request.SerializeToString()
+    # write to the COM
+    serial.write(wrap_content(start))
+
+
+def send_status_req(serial):
+    # request status data
+    request = Digi18Com_pb2.Request()
+    request.action_id = Digi18Com_pb2.SAMPLER_STATUS
+    start = request.SerializeToString()
+    # write to the COM
+    serial.write(wrap_content(start))
+
 
 while True:
-    print('%s' % datetime.datetime.now(), "Sending START request...")
+    print(" s - start program; f - finish program; c - filter change; otherwise - status request")
+    # default command is - STATUS request
+    user_input = "st"
+    try:
+        user_input = inputimeout(prompt='>>', timeout=5)
+    except:
+        print("")
 
     ser = serial.Serial('/dev/ttyUSB0', 19200, timeout=1)
-    # request status data
-    req = Digi18Com_pb2.Request()
-    req.action_id = Digi18Com_pb2.PROGRAM_CMD
-    req.program_cmd.type = Digi18Com_pb2.ProgramCmd.START
-    body = req.SerializeToString()
 
-    header = bytearray()
-    header += b'\x1b'
-    header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
-    header += struct.pack('>H', len(body))
-    header += struct.pack('>B', checksum(header))
-    header += body
-    header += struct.pack('>B', checksum(body))
+    if user_input == "s":
+        print("sending START...")
+        send_program_cmd(ser, Digi18Com_pb2.ProgramCmd.START)
+    elif user_input == "f":
+        print("sending FINISH...")
+        send_program_cmd(ser, Digi18Com_pb2.ProgramCmd.FINISH)
+    elif user_input == "c":
+        print("sending FILTER CHANGE...")
+        send_filter_cmd(ser, Digi18Com_pb2.FilterCmd.CHANGE)
+    else:
+        print("sending STATUS request...")
+        send_status_req(ser)
 
-    # send to the COM
-    ser.write(header)
-
-    # read response
-    print("Reading response...")
-    # read header
-    ser.read()
-    # read version
-    print("PROTOCOL=", struct.unpack('>B', ser.read())[0])
-    # read telegram length
-    length = struct.unpack('>H', ser.read(2))[0]
-    # read XOR byte for the header
-    ser.read()
-
-    # read the BODY (payload + cs)
-    s = ser.read(length)
-    # remove checksum
-    s[:-1]
-    input = Digi18Com_pb2.Response()
-    input.ParseFromString(s)
-    print(input);
-
+    # print response
+    print(read_response(ser))
     ser.close()
-    time.sleep(30)
-    
-    print('%s' % datetime.datetime.now(), "Sending FINISH request...")
-
-    ser = serial.Serial('/dev/ttyUSB0', 19200, timeout=1)
-    # request status data
-    req = Digi18Com_pb2.Request()
-    req.action_id = Digi18Com_pb2.PROGRAM_CMD
-    req.program_cmd.type = Digi18Com_pb2.ProgramCmd.FINISH
-    body = req.SerializeToString()
-
-    header = bytearray()
-    header += b'\x1b'
-    header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
-    header += struct.pack('>H', len(body))
-    header += struct.pack('>B', checksum(header))
-    header += body
-    header += struct.pack('>B', checksum(body))
-
-    # send to the COM
-    ser.write(header)
-
-    # read response
-    print("Reading response...")
-    # read header
-    ser.read()
-    # read version
-    print("PROTOCOL=", struct.unpack('>B', ser.read())[0])
-    # read telegram length
-    length = struct.unpack('>H', ser.read(2))[0]
-    # read XOR byte for the header
-    ser.read()
-
-    # read the BODY (payload + cs)
-    s = ser.read(length)
-    # remove checksum
-    s[:-1]
-    input = Digi18Com_pb2.Response()
-    input.ParseFromString(s)
-    print(input);
-
-    ser.close()
-    time.sleep(20)
-    
-    print('%s' % datetime.datetime.now(), "Sending CHANGE FILTER request...")
-
-    ser = serial.Serial('/dev/ttyUSB0', 19200, timeout=1)
-    # request status data
-    req = Digi18Com_pb2.Request()
-    req.action_id = Digi18Com_pb2.FILTER_CMD
-    req.filter_cmd.type = Digi18Com_pb2.FilterCmd.CHANGE
-    body = req.SerializeToString()
-
-    header = bytearray()
-    header += b'\x1b'
-    header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
-    header += struct.pack('>H', len(body))
-    header += struct.pack('>B', checksum(header))
-    header += body
-    header += struct.pack('>B', checksum(body))
-
-    # send to the COM
-    ser.write(header)
-
-    # read response
-    print("Reading response...")
-    # read header
-    ser.read()
-    # read version
-    print("PROTOCOL=", struct.unpack('>B', ser.read())[0])
-    # read telegram length
-    length = struct.unpack('>H', ser.read(2))[0]
-    # read XOR byte for the header
-    ser.read()
-
-    # read the BODY (payload + cs)
-    s = ser.read(length)
-    # remove checksum
-    s[:-1]
-    input = Digi18Com_pb2.Response()
-    input.ParseFromString(s)
-    print(input);
-
-    ser.close()
-    time.sleep(10)
-    
-    print('%s' % datetime.datetime.now(), "Sending SAMPLER_STATUS request...")
-
-    ser = serial.Serial('/dev/ttyUSB0', 19200, timeout=1)
-    # request status data
-    response = Digi18Com_pb2.Response()
-    response.action_id = Digi18Com_pb2.SAMPLER_STATUS
-    body = response.SerializeToString()
-
-    header = bytearray()
-    header += b'\x1b'
-    header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
-    header += struct.pack('>H', len(body))
-    header += struct.pack('>B', checksum(header))
-    header += body
-    header += struct.pack('>B', checksum(body))
-
-    # send to the COM
-    ser.write(header)
-
-    # read response
-    print("Reading response...")
-    # read header
-    ser.read()
-    # read version
-    print("PROTOCOL=", struct.unpack('>B', ser.read())[0])
-    # read telegram length
-    length = struct.unpack('>H', ser.read(2))[0]
-    # read XOR byte for the header
-    ser.read()
-
-    # read the BODY (payload + cs)
-    s = ser.read(length)
-    # remove checksum
-    s[:-1]
-    input = Digi18Com_pb2.Response()
-    input.ParseFromString(s)
-    print(input);
-
-    ser.close()
-    time.sleep(1)
-    
