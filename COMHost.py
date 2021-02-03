@@ -19,10 +19,7 @@ def wrap_content(content):
     # [HEADER]=[0x1b (1 byte)]+[Protocol version (1 byte)]+[BODY size (2 bytes)]+[Checksum(1 byte)]
     header += b'\x1b'
     header += struct.pack('>B', Digi18Com_pb2.PROTOCOL_VERSION)
-    checksum_size = 0
-    # TODO comment next line to use PROTOCOL VERSION 4
-    # checksum_size = 1
-    header += struct.pack('>H', len(content) + checksum_size)
+    header += struct.pack('>H', len(content) + 1)
     header += struct.pack('>B', checksum(header))
     # [BODY] = [Content]+[Checksum (1 byte)]
     header += content
@@ -42,8 +39,7 @@ def read_response(serial):
     # read the BODY (payload + cs)
     s = serial.read(length)
     # remove checksum
-    # TODO comment next line to use PROTOCOL VERSION 4
-    # s = s[:-1]
+    s = s[:-1]
     response = Digi18Com_pb2.Response()
     response.ParseFromString(s)
     return response
