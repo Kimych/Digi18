@@ -13,6 +13,10 @@ pip install --upgrade google-api-python-client
 ```
 pip install pyserial
 ```
+4. Check/install 'inputimeout' module:
+```
+pip install inputimeout
+```
 
 # Run
 1. Download and unpack (or clone) project from here https://github.com/Kimych/Digi18
