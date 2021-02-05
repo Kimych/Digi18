@@ -123,6 +123,16 @@ message ConfigurationEntry {
   optional string value = 4; // parameter value
 }
 
+// Definitions of config names in ConfigurationEntry
+enum ConfigurationCmds {
+  OperationFlowRate = 1; //Set flow rate
+  OperationTemperature = 2;  //Set heater temperature
+  OperationFilterNumber = 3; //Set/change current filter number
+  GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
+  GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
+  GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
+}
+
 ///////////////////////////////////////////////////
 // Request and associated messages definition
 // direction: from Host to Sampler
@@ -177,6 +187,7 @@ message Request {
   optional UsbCmd usb_cmd = 12; // action id = USB_CMD
   optional int64 sys_time = 13 [(unit) = TIMESTAMP]; // action ID = TIME_SYNC
 }
+
 
 /////////////////////////////////////////////////
 // Response and associated messages definition
@@ -270,17 +281,7 @@ message Response {
   optional ProgramCmd program = 8; // action id = PROGRAM_CMD
 }
 
-///////////////////////////////////////////////////
-// Definitions of config names in ConfigurationEntry
-///////////////////////////////////////////////////
-enum ConfigurationCmds {
-  OperationFlowRate = 1; //Set flow rate
-  OperationTemperature = 2;  //Set heater temperature
-  OperationFilterNumber = 3; //Set/change current filter number
-  GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
-  GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
-  GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
-}
+
 
 /*TODO
 * check temperature sensors (in configuration)
