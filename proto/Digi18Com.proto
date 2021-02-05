@@ -5,8 +5,12 @@
 * @Company Envinet GmbH
 *
 * Created on: 19.01.2018
-* Update on: 02.01.2021
+* Update on: 05.02.2021
 *
+* V6 05.02.2012 : Added ClimatisationInfo for optional heater unit
+*                 Renamed config_to_update
+*                 Added different ActionIds for reading/writing configuration parameters
+*                 Added list of configuration parameters
 * V5 02.02.2021 : fix timestamp type; and a lot of typos
 * V4 10.12.2020 : Including SamplingTime in DeviceStatus
 *                 Including Volume in FlowInfo
@@ -25,7 +29,7 @@ option java_package = "net.envinet.cpu.commco.protocols.digitel";
 // Protocol version
 ///////////////////////////////////////////////////
 enum constant {
-  PROTOCOL_VERSION = 5;
+  PROTOCOL_VERSION = 6  ;
 }
 
 ///////////////////////////////////////////////////
@@ -191,7 +195,7 @@ message ProgramRunInfo {
   optional uint32 elapsed_time = 7 [(unit) = MINUTE];  // current state (WORK, WAIT or PAUSE) elapsed time duration
 }
 
-message ClimatisationInfo { // Filter store room climatisation device info
+message ClimatisationInfo {// Filter store room climatisation device info
   optional float set_temperature = 1 [(unit) = CELSIUS_DEGREE]; // current set temperature for heater unit
   optional float cur_temperature = 2 [(unit) = CELSIUS_DEGREE]; // current temperature  of heater unit
 }
@@ -224,7 +228,7 @@ message DeviceStatus {
   optional FlowInfo internal_flow_info = 3;  //  internal flow meter statistics
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
   optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
-  optional uint32 SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
+  optional uint32 SamplingTime = 6 [(unit) = SECOND];  //current sampling time in [s]
   optional ProgramRunInfo program_run_info = 7; // current run info (together with program statistics)
   repeated Message new_log_messages = 8; // list of last unread messages
   optional float pump_output = 9 [(unit) = PERCENTAGE]; //current relative pump power
@@ -270,14 +274,13 @@ message Response {
 // Definitions of config names in ConfigurationEntry
 ///////////////////////////////////////////////////
 enum ConfigurationCmds {
-    OperationFlowRate = 1; //Set flow rate
-    OperationTemperature = 2;  //Set heater temperature
-    OperationFilterNumber = 3; //Set/change current filter number
-    GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
-    GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
-    GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
+  OperationFlowRate = 1; //Set flow rate
+  OperationTemperature = 2;  //Set heater temperature
+  OperationFilterNumber = 3; //Set/change current filter number
+  GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
+  GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
+  GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
 }
-
 
 /*TODO
 * check temperature sensors (in configuration)
