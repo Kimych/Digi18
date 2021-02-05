@@ -5,12 +5,14 @@
 * @Company Envinet GmbH
 *
 * Created on: 19.01.2018
-* Update on: 02.01.2018
-* V2  6.11.2020 : Removal of extensions in messages response and request
+* Update on: 02.01.2021
+*
+* V5 02.02.2021 : fix timestamp type; and a lot of typos
+* V4 10.12.2020 : Including SamplingTime in DeviceStatus
+*                 Including Volume in FlowInfo
 * V3  9.11.2020 : Removal of ClimatisationInfo because not used
-*				  Including CurFilterNumber in DevicStatus
-* V4 10.12.2020 : Including SamplingTime in DevicStatus
-                  Including Volume in FlowInfo
+*				  Including CurFilterNumber in DeviceStatus
+* V2  6.11.2020 : Removal of extensions in messages response and request
 */
 syntax = "proto2";
 // import option descriptor used to define our own options
@@ -20,10 +22,10 @@ package digi.pb;
 option java_package = "net.envinet.cpu.commco.protocols.digitel";
 
 ///////////////////////////////////////////////////
-// Protocol verson
+// Protocol version
 ///////////////////////////////////////////////////
 enum constant {
-  PROTOCOL_VERSION = 2;
+  PROTOCOL_VERSION = 5;
 }
 
 ///////////////////////////////////////////////////
@@ -41,7 +43,7 @@ enum Unit {
   KPA = 9; // (kPa) kilopascal, pressure and stress equal to 10³ pascals
   MBAR = 10; // (mbar) millibar exactly equal to 100 Pa
   L_MIN = 11; // (l/min) volumetric flow rate in litre per minute
-  PERSENTAGE = 12; // (%) ratio expressed as a fraction of 100
+  PERCENTAGE = 12; // (%) ratio expressed as a fraction of 100
   CUBIC_METER = 13; // (m³) volume of a cube with edges one metre in length
   CUBIC_METER_IN_STD = 14; // (Sm³) the volume at standard conditions
   DEGREE = 15; // (°) angle value
@@ -73,15 +75,15 @@ enum ActionID {
   CLIMATISATION_INFO = 4; // get climatisation device info
   USB_INFO = 5; // USB storage data
 
-  // data
-  CONFIGURATION = 6;// system configuration
-
   // commands
-  PROGRAM_CMD = 7; // program command
-  FILTER_CMD = 8; // filter change action
-  USB_CMD = 9; // usb stick actions
-  REPEAT = 10; // force sender to repeat last telegram (Request or Responce)
-  TIME_SYNC = 11; // set Samler system time
+  PROGRAM_CMD = 8; // program command
+  FILTER_CMD = 9; // filter change action
+  USB_CMD = 10; // usb stick actions
+  REPEAT = 11; // force sender to repeat last telegram (Request or Response)
+  TIME_SYNC = 12; // set Sampler system time
+  // data
+  READ_CONFIGURATION = 20;// read list of values of system configuration
+  WRITE_CONFIGURATION = 21;// write list of new values into s    ystem configuration
 }
 
 ///////////////////////////////////////////////////
@@ -89,8 +91,8 @@ enum ActionID {
 ///////////////////////////////////////////////////
 
 message Program {
-  repeated ProgramEntry entry = 1; //list of program sycles
-  optional bool is_continius = 2; // if TRUE - the whole program (all cycles) will repeat until we have filters
+  repeated ProgramEntry entry = 1; //list of program cycles
+  optional bool is_continuous = 2; // if TRUE - the whole program (all cycles) will repeat until we have filters
 }
 
 // one cycle data
@@ -103,7 +105,7 @@ message ProgramEntry {
 }
 
 message ConfigurationEntry {
-  optional string name = 1; // parameter unuque name
+  optional string name = 1; // parameter unique name
   enum EntryType {
     INTEGER = 1;
     FLOAT = 2;
@@ -118,7 +120,7 @@ message ConfigurationEntry {
 }
 
 ///////////////////////////////////////////////////
-// Request and assosiated messages definition
+// Request and associated messages definition
 // direction: from Host to Sampler
 ///////////////////////////////////////////////////
 
@@ -138,7 +140,7 @@ message ProgramCmd {
 message FilterCmd {
   enum Type {
     CHANGE = 1; // change current filter
-    DISCHARGE_MAGASINE = 2; // all filters from the left side magazine are changed through to the right side magazine.
+    DISCHARGE_MAGAZINE = 2; // all filters from the left side magazine are changed through to the right side magazine.
   }
   optional Type type = 1; // type of command
 }
@@ -166,21 +168,21 @@ message Request {
   //IDs from 1 to 9 reserved for telegram content
   //IDs from 9 to 64 reserved for telegram messages
   optional ProgramCmd program_cmd = 9; // action id = PROGRAM_CMD
-  repeated ConfigurationEntry config_to_update = 10; // action id = CONFIGURATION
+  repeated ConfigurationEntry config_entry = 10; // action id = CONFIGURATION
   optional FilterCmd filter_cmd = 11; // action id = FILTER_CMD
   optional UsbCmd usb_cmd = 12; // action id = USB_CMD
   optional int64 sys_time = 13 [(unit) = TIMESTAMP]; // action ID = TIME_SYNC
 }
 
 /////////////////////////////////////////////////
-// Response and assosiated messages definition
+// Response and associated messages definition
 // direction: from Sampler to Host
 /////////////////////////////////////////////////
 
 message ProgramRunInfo {
   optional uint32 current_cycle = 1; // number of current cycle
   optional uint32 total_n_of_cycles = 2; // total number of cycles
-  optional bool is_continius_program = 3; // continuous program (cycles are repeated until magazine is empty)
+  optional bool is_continuous_program = 3; // continuous program (cycles are repeated until magazine is empty)
 
   optional uint32 current_run = 4; // number of current cycle
   optional uint32 total_n_of_runs = 5; // total number of cycles
@@ -189,6 +191,10 @@ message ProgramRunInfo {
   optional uint32 elapsed_time = 7 [(unit) = MINUTE];  // current state (WORK, WAIT or PAUSE) elapsed time duration
 }
 
+message ClimatisationInfo { // Filter store room climatisation device info
+  optional float set_temperature = 1 [(unit) = CELSIUS_DEGREE]; // current set temperature for heater unit
+  optional float cur_temperature = 2 [(unit) = CELSIUS_DEGREE]; // current temperature  of heater unit
+}
 
 message FlowInfo {
   optional float temperature = 1 [(unit) = CELSIUS_DEGREE]; // current temperature
@@ -196,30 +202,32 @@ message FlowInfo {
   optional float flow_rate = 3 [(unit) = L_MIN]; // flow rate
   optional float volume = 4 [(unit) = LITER];  //volume
   optional bool is_estimated = 5; // if TRUE - estimated values instead of real are used
+  optional float humidity = 7 [(unit) = PERCENTAGE]; // current relative air humidity
 }
 
-message DevicStatus {
+message DeviceStatus {
   enum SamplerState {
     UNKNOWN = 1;   // Sample waiting configured time before start to WORK
     INITIALISATION = 2; // all systems, options (cartridge changer, external sensors) and output devices (e.g. USB, printer) are being checked
     WAIT = 3;   // Sample waiting configured time before start to WORK
-    WORK = 4;   // Sampler do normal air pomping
+    WORK = 4;   // Sampler do normal air pumping
     PAUSE = 5;  // Sample waiting configured time after finishing of WORK
-    PROGRAM_EXPIRED = 6; // the flow through the filter is stopped and Sampler will stay in this state forewer
+    PROGRAM_EXPIRED = 6; // the flow through the filter is stopped and Sampler will stay in this state forever
     START_AT = 7; // the HVS control waits in this operating state until the set start time has been reached
-    PRE_START_FILTER_UNTIL = 8; // the blower is switched on and the inserted filter is flowed through until the set start time hasbeen reached. When the start time is reached, the filter data are put out and a filter change is performed
+    PRE_START_FILTER_UNTIL = 8; // the blower is switched on and the inserted filter is flowed through until the set start time has been reached. When the start time is reached, the filter data are put out and a filter change is performed
     FILTER_CHANGE_ACTIVE = 9; // the filter change is just being carried out
 
     ERROR = 15;  // Sample in error state
   }
-  optional SamplerState device_state = 1; // carrent sampler status
+  optional SamplerState device_state = 1; // current sampler status
   optional int64 timestamp = 2 [(unit) = TIMESTAMP];  // system timestamp
   optional FlowInfo internal_flow_info = 3;  //  internal flow meter statistics
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
   optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
-  optional float SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
-  optional ProgramRunInfo program_run_info = 7; // curent run info (together with program statistics)
+  optional uint32 SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
+  optional ProgramRunInfo program_run_info = 7; // current run info (together with program statistics)
   repeated Message new_log_messages = 8; // list of last unread messages
+  optional float pump_output = 9 [(unit) = PERCENTAGE]; //current relative pump power
 }
 
 message Message {
@@ -236,7 +244,6 @@ message SystemInfo {
   optional string sw_version = 1; // Sampler software version
   optional uint32 pump_on_duration = 2 [(unit) = MINUTE]; // pumping time duration
   optional uint32 power_on_duration = 3 [(unit) = MINUTE]; // power on duration time
-
 }
 
 message CmdResult {
@@ -245,22 +252,32 @@ message CmdResult {
     FAIL = 2; //fail
   }
   optional Status status = 1; // execution result
-  repeated Message error_msg = 4; // error message(s) in case of unsuccessfull comand execution
+  repeated Message error_msg = 4; // error message(s) in case of unsuccessful command execution
 }
 
 message Response {
-  optional ActionID action_id = 1;    // equested action ID
+  optional ActionID action_id = 1;    // requested action ID
   optional CmdResult cmd_result = 2; // result of executed command
-
-  //IDs from 1 to 9 reserved for telegram content
-  //IDs from 9 to 64 reserved for  response messages
-  optional DevicStatus device_status = 9; // action id = SAMPLER_STATUS
-  repeated Message messages = 10; // action id = LOG_MESSAGES
-  optional SystemInfo sys_info = 11; // action id = SYS_INFO
-  repeated ConfigurationEntry all_config = 12; // action id = CONFIGURATION
-  optional UsbInfo usb_info = 13; // action id = USB_INFO
-  optional ProgramCmd program = 14; // action id = PROGRAM_CMD
+  optional DeviceStatus device_status = 3; // action id = SAMPLER_STATUS
+  repeated Message messages = 4; // action id = LOG_MESSAGES
+  optional SystemInfo sys_info = 5; // action id = SYS_INFO
+  repeated ConfigurationEntry all_config = 6; // action id = CONFIGURATION
+  optional UsbInfo usb_info = 7; // action id = USB_INFO
+  optional ProgramCmd program = 8; // action id = PROGRAM_CMD
 }
+
+///////////////////////////////////////////////////
+// Definitions of config names in ConfigurationEntry
+///////////////////////////////////////////////////
+enum ConfigurationCmds {
+    OperationFlowRate = 1; //Set flow rate
+    OperationTemperature = 2;  //Set heater temperature
+    OperationFilterNumber = 3; //Set/change current filter number
+    GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
+    GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
+    GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
+}
+
 
 /*TODO
 * check temperature sensors (in configuration)
