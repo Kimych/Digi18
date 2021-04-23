@@ -7,7 +7,7 @@
 * Created on: 19.01.2018
 * Update on: 05.02.2021
 *
-* V6 05.02.2012 : Added ClimatisationInfo for optional heater unit
+* V6 21.04.2012 : Added ClimatisationInfo for optional heater unit
 *                 Renamed config_to_update
 *                 Added different ActionIds for reading/writing configuration parameters
 *                 Added list of configuration parameters
@@ -79,6 +79,7 @@ enum ActionID {
   SYS_INFO = 3; // system information
   CLIMATISATION_INFO = 4; // get climatisation device info
   USB_INFO = 5; // USB storage data
+  HEATER_INFO = 6; // get heater device info
 
   // commands
   PROGRAM_CMD = 8; // program command
@@ -88,7 +89,7 @@ enum ActionID {
   TIME_SYNC = 12; // set Sampler system time
   // data
   READ_CONFIGURATION = 20;// read list of values of system configuration
-  WRITE_CONFIGURATION = 21;// write list of new values into s    ystem configuration
+  WRITE_CONFIGURATION = 21;// write list of new values into system configuration
 }
 
 ///////////////////////////////////////////////////
@@ -97,7 +98,7 @@ enum ActionID {
 
 message Program {
   repeated ProgramEntry entry = 1; //list of program cycles
-  optional bool is_continuous = 2; // if TRUE - the whole program (all cycles) will repeat until we have filters
+  optional bool is_continuous = 2; // if TRUE - the whole program (all cycles) will repeat until we have no more filters
 }
 
 // one cycle data
@@ -125,13 +126,16 @@ message ConfigurationEntry {
 }
 
 // Definitions of config names in ConfigurationEntry
+// eg config_entry.name = "OperationFlowRate" if flow rate should be set
 enum ConfigurationCmds {
   OperationFlowRate = 1; //Set flow rate
-  OperationTemperature = 2;  //Set heater temperature
-  OperationFilterNumber = 3; //Set/change current filter number
-  GeneralLogFilterNumber = 4; //Enable/disable logging of filter number
-  GeneralFilterChAtOverload = 5; //Enable/disable filter change after pump overload
-  GeneralTurbineOn2hAfterOverload = 6;  //Enable/disable automatic restart of pump after overload
+  OperationHeaterTemperature = 2;  //Set heater temperature
+  OperationClimatisationTemperature = 3;  //Set climatisation temperature
+  OperationFilterNumber = 4; //Set/change current filter number
+  OperationRemainingFilters = 5; //Set/change amount of remaining filter in magazine
+  GeneralLogFilterNumber = 6; //Enable/disable logging of filter number
+  GeneralFilterChAtOverload = 7; //Enable/disable filter change after pump overload
+  GeneralTurbineOn2hAfterOverload = 8;  //Enable/disable automatic restart of pump after overload
 }
 
 ///////////////////////////////////////////////////
@@ -208,8 +212,8 @@ message ProgramRunInfo {
 }
 
 message ClimatisationInfo {// Filter store room climatisation device info
-  optional float set_temperature = 1 [(unit) = CELSIUS_DEGREE]; // current set temperature for heater unit
-  optional float cur_temperature = 2 [(unit) = CELSIUS_DEGREE]; // current temperature  of heater unit
+  optional float set_temperature = 1 [(unit) = CELSIUS_DEGREE]; // current set temperature for heater/climatisation unit
+  optional float cur_temperature = 2 [(unit) = CELSIUS_DEGREE]; // current temperature  of heater/climatisation unit
 }
 
 message FlowInfo {
@@ -239,12 +243,13 @@ message DeviceStatus {
   optional int64 timestamp = 2 [(unit) = TIMESTAMP];  // system timestamp
   optional FlowInfo internal_flow_info = 3;  //  internal flow meter statistics
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
-  optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
-  optional uint32 SamplingTime = 6 [(unit) = SECOND];  //current sampling time in [s]
+  optional uint32 cur_filter_number = 5;   //current filter number in sampling chamber
+  optional uint32 sampling_time = 6 [(unit) = SECOND];  //current sampling time in [s]
   optional ProgramRunInfo program_run_info = 7; // current run info (together with program statistics)
   repeated Message new_log_messages = 8; // list of last unread messages
   optional float pump_output = 9 [(unit) = PERCENTAGE]; //current relative pump power
   optional bool magazine_empty = 10; // indicates that there are no more filters left in the magazine
+  optional uint32 remaining_filters = 11;   // amount of remaining filters in magazine
 }
 
 message Message {
@@ -281,6 +286,8 @@ message Response {
   repeated ConfigurationEntry all_config = 6; // action id = CONFIGURATION
   optional UsbInfo usb_info = 7; // action id = USB_INFO
   optional ProgramCmd program = 8; // action id = PROGRAM_CMD
+  optional ClimatisationInfo heater_info = 9; // action id = HEATER_INFO
+  optional ClimatisationInfo clima_info = 10; // action id = CLIMATISATION_INFO
 }
 
 
