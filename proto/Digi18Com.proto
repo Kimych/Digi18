@@ -5,13 +5,9 @@
 * @Company Envinet GmbH
 *
 * Created on: 19.01.2018
-* Update on: 05.02.2021
+* Update on: 25.05.2021
 *
-* V6 21.04.2012 : Added ClimatisationInfo for optional heater unit
-*                 Renamed config_to_update
-*                 Added different ActionIds for reading/writing configuration parameters
-*                 Added list of configuration parameters
-*                 Added Statusinfo about empty magazine
+* V6 21.05.2021 : remove unused items
 * V5 02.02.2021 : fix timestamp type; and a lot of typos
 * V4 10.12.2020 : Including SamplingTime in DeviceStatus
 *                 Including Volume in FlowInfo
@@ -77,66 +73,18 @@ enum ActionID {
   SAMPLER_STATUS = 1; // sampler status data
   LOG_MESSAGES = 2; // log messages
   SYS_INFO = 3; // system information
-  CLIMATISATION_INFO = 4; // get climatisation device info
-  USB_INFO = 5; // USB storage data
-  HEATER_INFO = 6; // get heater device info
-
   // commands
-  PROGRAM_CMD = 8; // program command
-  FILTER_CMD = 9; // filter change action
-  USB_CMD = 10; // usb stick actions
-  REPEAT = 11; // force sender to repeat last telegram (Request or Response)
-  TIME_SYNC = 12; // set Sampler system time
-  // data
-  READ_CONFIGURATION = 20;// read list of values of system configuration
-  WRITE_CONFIGURATION = 21;// write list of new values into system configuration
+  PROGRAM_CMD = 4; // program command
+  FILTER_CMD = 5; // filter change action
+  REPEAT = 6; // force sender to repeat last telegram (Request or Response)
+  TIME_SYNC = 7; // set Sampler system time
 }
 
 ///////////////////////////////////////////////////
 // Common messages definition
 ///////////////////////////////////////////////////
 
-message Program {
-  repeated ProgramEntry entry = 1; //list of program cycles
-  optional bool is_continuous = 2; // if TRUE - the whole program (all cycles) will repeat until we have no more filters
-}
 
-// one cycle data
-message ProgramEntry {
-  optional uint32 wait_duration = 1 [(unit) = MINUTE]; // duration of WAIT step
-  optional uint32 work_duration = 2 [(unit) = MINUTE]; // duration of WORK step
-  optional uint32 pause_duration = 3 [(unit) = MINUTE]; // duration of PAUSE step
-  optional uint32 number_of_runs = 4; // number of cycle repeats
-  optional bool is_filter_change_required = 5; // if TRUE - change filter after cycle
-}
-
-message ConfigurationEntry {
-  optional string name = 1; // parameter unique name
-  enum EntryType {
-    INTEGER = 1;
-    FLOAT = 2;
-    STRING = 3;
-    IP_ADDRESS = 4;
-    BOOL = 5;
-    TIMESTAMP = 6;
-  }
-  optional EntryType type = 2; // parameter type
-  optional Unit unit = 3; // parameter unit
-  optional string value = 4; // parameter value
-}
-
-// Definitions of config names in ConfigurationEntry
-// eg config_entry.name = "OperationFlowRate" if flow rate should be set
-enum ConfigurationCmds {
-  OperationFlowRate = 1; //Set flow rate
-  OperationHeaterTemperature = 2;  //Set heater temperature
-  OperationClimatisationTemperature = 3;  //Set climatisation temperature
-  OperationFilterNumber = 4; //Set/change current filter number
-  OperationRemainingFilters = 5; //Set/change amount of remaining filter in magazine
-  GeneralLogFilterNumber = 6; //Enable/disable logging of filter number
-  GeneralFilterChAtOverload = 7; //Enable/disable filter change after pump overload
-  GeneralTurbineOn2hAfterOverload = 8;  //Enable/disable automatic restart of pump after overload
-}
 
 ///////////////////////////////////////////////////
 // Request and associated messages definition
@@ -145,41 +93,19 @@ enum ConfigurationCmds {
 
 message ProgramCmd {
   enum Type {
-    START = 1; // start_at and is_prestart_filter should take in account
+    START = 1; // start immediately
     FINISH = 2; // finish currently running program
-    REQUEST = 3; // request program content from Sampler
-    UPDATE = 4; // update program content on Sampler
   }
   optional Type type = 1; // type of command
-  optional int64 start_at = 2  [(unit) = TIMESTAMP]; //a certain point in time to start program, if missing - immediately
-  optional bool is_prestart_filter = 3; // if TRUE - the blower turns on and the inserted filter stays in the air flow until the starting time is reached
-  optional Program program = 4; // program data
 }
 
 message FilterCmd {
   enum Type {
     CHANGE = 1; // change current filter
-    DISCHARGE_MAGAZINE = 2; // all filters from the left side magazine are changed through to the right side magazine.
   }
   optional Type type = 1; // type of command
 }
 
-message UsbCmd {
-  enum Type {
-    USB_SW_UPDATE = 1; // initiate SW update from USB stick
-    USB_COPY_INT_MEM = 2; // copy internal memory
-    USB_NEW_DATA = 3; // save new data from now
-    USB_EJECT = 4; // safely eject USB stick
-  }
-  optional Type type = 1; // type of command
-}
-
-message UsbInfo {
-  optional int64 total_memory_size = 1 [(unit) = B]; // USB storage size
-  optional int64 log_file_size = 2 [(unit) = B]; // log file size
-  optional int64 climate_file_size = 3 [(unit) = B]; //  temperature of filter storage and clima status file size
-  optional int64 wind_file_size = 4 [(unit) = B]; //  wind data file size
-}
 
 message Request {
   optional ActionID action_id = 1;    // requested action ID
@@ -187,69 +113,38 @@ message Request {
   //IDs from 1 to 9 reserved for telegram content
   //IDs from 9 to 64 reserved for telegram messages
   optional ProgramCmd program_cmd = 9; // action id = PROGRAM_CMD
-  repeated ConfigurationEntry config_entry = 10; // action id = CONFIGURATION
-  optional FilterCmd filter_cmd = 11; // action id = FILTER_CMD
-  optional UsbCmd usb_cmd = 12; // action id = USB_CMD
-  optional int64 sys_time = 13 [(unit) = TIMESTAMP]; // action ID = TIME_SYNC
+  optional FilterCmd filter_cmd = 10; // action id = FILTER_CMD
+  optional int64 sys_time = 11 [(unit) = TIMESTAMP]; // action ID = TIME_SYNC
 }
-
 
 /////////////////////////////////////////////////
 // Response and associated messages definition
 // direction: from Sampler to Host
 /////////////////////////////////////////////////
 
-message ProgramRunInfo {
-  optional uint32 current_cycle = 1; // number of current cycle
-  optional uint32 total_n_of_cycles = 2; // total number of cycles
-  optional bool is_continuous_program = 3; // continuous program (cycles are repeated until magazine is empty)
-
-  optional uint32 current_run = 4; // number of current cycle
-  optional uint32 total_n_of_runs = 5; // total number of cycles
-
-  optional uint32 estimated_time = 6 [(unit) = MINUTE];  // (WORK, WAIT or PAUSE) estimated time duration
-  optional uint32 elapsed_time = 7 [(unit) = MINUTE];  // current state (WORK, WAIT or PAUSE) elapsed time duration
-}
-
-message ClimatisationInfo {// Filter store room climatisation device info
-  optional float set_temperature = 1 [(unit) = CELSIUS_DEGREE]; // current set temperature for heater/climatisation unit
-  optional float cur_temperature = 2 [(unit) = CELSIUS_DEGREE]; // current temperature  of heater/climatisation unit
-}
-
 message FlowInfo {
   optional float temperature = 1 [(unit) = CELSIUS_DEGREE]; // current temperature
   optional float pressure = 2 [(unit) = HPA]; // air pressure
   optional float flow_rate = 3 [(unit) = L_MIN]; // flow rate
   optional float volume = 4 [(unit) = LITER];  //volume
-  optional bool is_estimated = 5; // if TRUE - estimated values instead of real are used
-  optional float humidity = 7 [(unit) = PERCENTAGE]; // current relative air humidity
 }
 
 message DeviceStatus {
   enum SamplerState {
     UNKNOWN = 1;   // Sample waiting configured time before start to WORK
     INITIALISATION = 2; // all systems, options (cartridge changer, external sensors) and output devices (e.g. USB, printer) are being checked
-    WAIT = 3;   // Sample waiting configured time before start to WORK
-    WORK = 4;   // Sampler do normal air pumping
-    PAUSE = 5;  // Sample waiting configured time after finishing of WORK
-    PROGRAM_EXPIRED = 6; // the flow through the filter is stopped and Sampler will stay in this state forever
-    START_AT = 7; // the HVS control waits in this operating state until the set start time has been reached
-    PRE_START_FILTER_UNTIL = 8; // the blower is switched on and the inserted filter is flowed through until the set start time has been reached. When the start time is reached, the filter data are put out and a filter change is performed
-    FILTER_CHANGE_ACTIVE = 9; // the filter change is just being carried out
-
+    WORK = 3;   // Sampler do normal air pumping
+    PROGRAM_EXPIRED = 4; // the flow through the filter is stopped and Sampler will stay in this state forever
+    FILTER_CHANGE_ACTIVE = 5; // the filter change is just being carried out
     ERROR = 15;  // Sample in error state
   }
   optional SamplerState device_state = 1; // current sampler status
   optional int64 timestamp = 2 [(unit) = TIMESTAMP];  // system timestamp
   optional FlowInfo internal_flow_info = 3;  //  internal flow meter statistics
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
-  optional uint32 cur_filter_number = 5;   //current filter number in sampling chamber
-  optional uint32 sampling_time = 6 [(unit) = SECOND];  //current sampling time in [s]
-  optional ProgramRunInfo program_run_info = 7; // current run info (together with program statistics)
-  repeated Message new_log_messages = 8; // list of last unread messages
-  optional float pump_output = 9 [(unit) = PERCENTAGE]; //current relative pump power
-  optional bool magazine_empty = 10; // indicates that there are no more filters left in the magazine
-  optional uint32 remaining_filters = 11;   // amount of remaining filters in magazine
+  optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
+  optional uint32 SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
+  repeated Message new_log_messages = 7; // list of last unread messages
 }
 
 message Message {
@@ -283,14 +178,8 @@ message Response {
   optional DeviceStatus device_status = 3; // action id = SAMPLER_STATUS
   repeated Message messages = 4; // action id = LOG_MESSAGES
   optional SystemInfo sys_info = 5; // action id = SYS_INFO
-  repeated ConfigurationEntry all_config = 6; // action id = CONFIGURATION
-  optional UsbInfo usb_info = 7; // action id = USB_INFO
-  optional ProgramCmd program = 8; // action id = PROGRAM_CMD
-  optional ClimatisationInfo heater_info = 9; // action id = HEATER_INFO
-  optional ClimatisationInfo clima_info = 10; // action id = CLIMATISATION_INFO
+  optional ProgramCmd program = 6; // action id = PROGRAM_CMD
 }
-
-
 
 /*TODO
 * check temperature sensors (in configuration)
