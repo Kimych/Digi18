@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Digi18Com.proto',
   package='digi.pb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"F\n\x07Program\x12$\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x15.digi.pb.ProgramEntry\x12\x15\n\ris_continuous\x18\x02 \x01(\x08\"\xa1\x01\n\x0cProgramEntry\x12\x1b\n\rwait_duration\x18\x01 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1b\n\rwork_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1c\n\x0epause_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\x12\x16\n\x0enumber_of_runs\x18\x04 \x01(\r\x12!\n\x19is_filter_change_required\x18\x05 \x01(\x08\"\xdd\x01\n\x12\x43onfigurationEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x04type\x18\x02 \x01(\x0e\x32%.digi.pb.ConfigurationEntry.EntryType\x12\x1b\n\x04unit\x18\x03 \x01(\x0e\x32\r.digi.pb.Unit\x12\r\n\x05value\x18\x04 \x01(\t\"X\n\tEntryType\x12\x0b\n\x07INTEGER\x10\x01\x12\t\n\x05\x46LOAT\x10\x02\x12\n\n\x06STRING\x10\x03\x12\x0e\n\nIP_ADDRESS\x10\x04\x12\x08\n\x04\x42OOL\x10\x05\x12\r\n\tTIMESTAMP\x10\x06\"\xc3\x01\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\x12\x16\n\x08start_at\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x1a\n\x12is_prestart_filter\x18\x03 \x01(\x08\x12!\n\x07program\x18\x04 \x01(\x0b\x32\x10.digi.pb.Program\"6\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\x12\x0b\n\x07REQUEST\x10\x03\x12\n\n\x06UPDATE\x10\x04\"^\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"*\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\x12\x16\n\x12\x44ISCHARGE_MAGAZINE\x10\x02\"~\n\x06UsbCmd\x12\"\n\x04type\x18\x01 \x01(\x0e\x32\x14.digi.pb.UsbCmd.Type\"P\n\x04Type\x12\x11\n\rUSB_SW_UPDATE\x10\x01\x12\x14\n\x10USB_COPY_INT_MEM\x10\x02\x12\x10\n\x0cUSB_NEW_DATA\x10\x03\x12\r\n\tUSB_EJECT\x10\x04\"\x86\x01\n\x07UsbInfo\x12\x1f\n\x11total_memory_size\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1b\n\rlog_file_size\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1f\n\x11\x63limate_file_size\x18\x03 \x01(\x03\x42\x04\x80\xb5\x18\x13\x12\x1c\n\x0ewind_file_size\x18\x04 \x01(\x03\x42\x04\x80\xb5\x18\x13\"\xf2\x01\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12\x35\n\x10\x63onfig_to_update\x18\n \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12&\n\nfilter_cmd\x18\x0b \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12 \n\x07usb_cmd\x18\x0c \x01(\x0b\x32\x0f.digi.pb.UsbCmd\x12\x16\n\x08sys_time\x18\r \x01(\x03\x42\x04\x80\xb5\x18\x02\"\xc9\x01\n\x0eProgramRunInfo\x12\x15\n\rcurrent_cycle\x18\x01 \x01(\r\x12\x19\n\x11total_n_of_cycles\x18\x02 \x01(\r\x12\x1d\n\x15is_continuous_program\x18\x03 \x01(\x08\x12\x13\n\x0b\x63urrent_run\x18\x04 \x01(\r\x12\x17\n\x0ftotal_n_of_runs\x18\x05 \x01(\r\x12\x1c\n\x0e\x65stimated_time\x18\x06 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1a\n\x0c\x65lapsed_time\x18\x07 \x01(\rB\x04\x80\xb5\x18\x04\"\x82\x01\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x06volume\x18\x04 \x01(\x02\x42\x04\x80\xb5\x18\x12\x12\x14\n\x0cis_estimated\x18\x05 \x01(\x08\"\x87\x04\n\x0c\x44\x65viceStatus\x12\x38\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32\".digi.pb.DeviceStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x1a\n\x0cSamplingTime\x18\x06 \x01(\rB\x04\x80\xb5\x18\x03\x12\x31\n\x10program_run_info\x18\x07 \x01(\x0b\x32\x17.digi.pb.ProgramRunInfo\x12*\n\x10new_log_messages\x18\x08 \x03(\x0b\x32\x10.digi.pb.Message\"\xb2\x01\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WAIT\x10\x03\x12\x08\n\x04WORK\x10\x04\x12\t\n\x05PAUSE\x10\x05\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x06\x12\x0c\n\x08START_AT\x10\x07\x12\x1a\n\x16PRE_START_FILTER_UNTIL\x10\x08\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\t\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xcc\x02\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12,\n\rdevice_status\x18\x03 \x01(\x0b\x32\x15.digi.pb.DeviceStatus\x12\"\n\x08messages\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x05 \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12/\n\nall_config\x18\x06 \x03(\x0b\x32\x1b.digi.pb.ConfigurationEntry\x12\"\n\x08usb_info\x18\x07 \x01(\x0b\x32\x10.digi.pb.UsbInfo\x12$\n\x07program\x18\x08 \x01(\x0b\x32\x13.digi.pb.ProgramCmd* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x05*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERCENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*\xc0\x01\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x16\n\x12\x43LIMATISATION_INFO\x10\x04\x12\x0c\n\x08USB_INFO\x10\x05\x12\x11\n\rCONFIGURATION\x10\x06\x12\x0f\n\x0bPROGRAM_CMD\x10\x07\x12\x0e\n\nFILTER_CMD\x10\x08\x12\x0b\n\x07USB_CMD\x10\t\x12\n\n\x06REPEAT\x10\n\x12\r\n\tTIME_SYNC\x10\x0b:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
+  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"S\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\"\x1d\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\"F\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"\x12\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\"\x99\x01\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12&\n\nfilter_cmd\x18\n \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12\x16\n\x08sys_time\x18\x0b \x01(\x03\x42\x04\x80\xb5\x18\x02\"l\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x06volume\x18\x04 \x01(\x02\x42\x04\x80\xb5\x18\x12\"\x94\x03\n\x0c\x44\x65viceStatus\x12\x38\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32\".digi.pb.DeviceStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x1a\n\x0cSamplingTime\x18\x06 \x01(\rB\x04\x80\xb5\x18\x03\x12*\n\x10new_log_messages\x18\x07 \x03(\x0b\x32\x10.digi.pb.Message\"s\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WORK\x10\x03\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x04\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\x05\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xf7\x01\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12,\n\rdevice_status\x18\x03 \x01(\x0b\x32\x15.digi.pb.DeviceStatus\x12\"\n\x08messages\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x05 \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12$\n\x07program\x18\x06 \x01(\x0b\x32\x13.digi.pb.ProgramCmd* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x06*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERCENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*z\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x0f\n\x0bPROGRAM_CMD\x10\x04\x12\x0e\n\nFILTER_CMD\x10\x05\x12\n\n\x06REPEAT\x10\x06\x12\r\n\tTIME_SYNC\x10\x07:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -33,14 +33,14 @@ _CONSTANT = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='PROTOCOL_VERSION', index=0, number=5,
+      name='PROTOCOL_VERSION', index=0, number=6,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=2856,
-  serialized_end=2888,
+  serialized_start=1478,
+  serialized_end=1510,
 )
 _sym_db.RegisterEnumDescriptor(_CONSTANT)
 
@@ -138,8 +138,8 @@ _UNIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2891,
-  serialized_end=3165,
+  serialized_start=1513,
+  serialized_end=1787,
 )
 _sym_db.RegisterEnumDescriptor(_UNIT)
 
@@ -163,47 +163,31 @@ _ACTIONID = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CLIMATISATION_INFO', index=3, number=4,
+      name='PROGRAM_CMD', index=3, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='USB_INFO', index=4, number=5,
+      name='FILTER_CMD', index=4, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CONFIGURATION', index=5, number=6,
+      name='REPEAT', index=5, number=6,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PROGRAM_CMD', index=6, number=7,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='FILTER_CMD', index=7, number=8,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USB_CMD', index=8, number=9,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REPEAT', index=9, number=10,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TIME_SYNC', index=10, number=11,
+      name='TIME_SYNC', index=6, number=7,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=3168,
-  serialized_end=3360,
+  serialized_start=1789,
+  serialized_end=1911,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONID)
 
 ActionID = enum_type_wrapper.EnumTypeWrapper(_ACTIONID)
-PROTOCOL_VERSION = 5
+PROTOCOL_VERSION = 6
 NO_UNIT = 1
 TIMESTAMP = 2
 SECOND = 3
@@ -228,14 +212,10 @@ MB = 21
 SAMPLER_STATUS = 1
 LOG_MESSAGES = 2
 SYS_INFO = 3
-CLIMATISATION_INFO = 4
-USB_INFO = 5
-CONFIGURATION = 6
-PROGRAM_CMD = 7
-FILTER_CMD = 8
-USB_CMD = 9
-REPEAT = 10
-TIME_SYNC = 11
+PROGRAM_CMD = 4
+FILTER_CMD = 5
+REPEAT = 6
+TIME_SYNC = 7
 
 UNIT_FIELD_NUMBER = 50000
 unit = _descriptor.FieldDescriptor(
@@ -245,44 +225,6 @@ unit = _descriptor.FieldDescriptor(
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-
-_CONFIGURATIONENTRY_ENTRYTYPE = _descriptor.EnumDescriptor(
-  name='EntryType',
-  full_name='digi.pb.ConfigurationEntry.EntryType',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='INTEGER', index=0, number=1,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='FLOAT', index=1, number=2,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='STRING', index=2, number=3,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='IP_ADDRESS', index=3, number=4,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='BOOL', index=4, number=5,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TIMESTAMP', index=5, number=6,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=432,
-  serialized_end=520,
-)
-_sym_db.RegisterEnumDescriptor(_CONFIGURATIONENTRY_ENTRYTYPE)
 
 _PROGRAMCMD_TYPE = _descriptor.EnumDescriptor(
   name='Type',
@@ -298,19 +240,11 @@ _PROGRAMCMD_TYPE = _descriptor.EnumDescriptor(
       name='FINISH', index=1, number=2,
       options=None,
       type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REQUEST', index=2, number=3,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='UPDATE', index=3, number=4,
-      options=None,
-      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=664,
-  serialized_end=718,
+  serialized_start=116,
+  serialized_end=145,
 )
 _sym_db.RegisterEnumDescriptor(_PROGRAMCMD_TYPE)
 
@@ -324,47 +258,13 @@ _FILTERCMD_TYPE = _descriptor.EnumDescriptor(
       name='CHANGE', index=0, number=1,
       options=None,
       type=None),
-    _descriptor.EnumValueDescriptor(
-      name='DISCHARGE_MAGAZINE', index=1, number=2,
-      options=None,
-      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=772,
-  serialized_end=814,
+  serialized_start=199,
+  serialized_end=217,
 )
 _sym_db.RegisterEnumDescriptor(_FILTERCMD_TYPE)
-
-_USBCMD_TYPE = _descriptor.EnumDescriptor(
-  name='Type',
-  full_name='digi.pb.UsbCmd.Type',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='USB_SW_UPDATE', index=0, number=1,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USB_COPY_INT_MEM', index=1, number=2,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USB_NEW_DATA', index=2, number=3,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='USB_EJECT', index=3, number=4,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=862,
-  serialized_end=942,
-)
-_sym_db.RegisterEnumDescriptor(_USBCMD_TYPE)
 
 _DEVICESTATUS_SAMPLERSTATE = _descriptor.EnumDescriptor(
   name='SamplerState',
@@ -381,42 +281,26 @@ _DEVICESTATUS_SAMPLERSTATE = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='WAIT', index=2, number=3,
+      name='WORK', index=2, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='WORK', index=3, number=4,
+      name='PROGRAM_EXPIRED', index=3, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PAUSE', index=4, number=5,
+      name='FILTER_CHANGE_ACTIVE', index=4, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PROGRAM_EXPIRED', index=5, number=6,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='START_AT', index=6, number=7,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='PRE_START_FILTER_UNTIL', index=7, number=8,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='FILTER_CHANGE_ACTIVE', index=8, number=9,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ERROR', index=9, number=15,
+      name='ERROR', index=5, number=15,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=2005,
-  serialized_end=2183,
+  serialized_start=775,
+  serialized_end=890,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICESTATUS_SAMPLERSTATE)
 
@@ -437,8 +321,8 @@ _MESSAGE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2272,
-  serialized_end=2299,
+  serialized_start=979,
+  serialized_end=1006,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_TYPE)
 
@@ -459,160 +343,10 @@ _CMDRESULT_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2493,
-  serialized_end=2519,
+  serialized_start=1200,
+  serialized_end=1226,
 )
 _sym_db.RegisterEnumDescriptor(_CMDRESULT_STATUS)
-
-
-_PROGRAM = _descriptor.Descriptor(
-  name='Program',
-  full_name='digi.pb.Program',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='entry', full_name='digi.pb.Program.entry', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='is_continuous', full_name='digi.pb.Program.is_continuous', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=62,
-  serialized_end=132,
-)
-
-
-_PROGRAMENTRY = _descriptor.Descriptor(
-  name='ProgramEntry',
-  full_name='digi.pb.ProgramEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='wait_duration', full_name='digi.pb.ProgramEntry.wait_duration', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))),
-    _descriptor.FieldDescriptor(
-      name='work_duration', full_name='digi.pb.ProgramEntry.work_duration', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))),
-    _descriptor.FieldDescriptor(
-      name='pause_duration', full_name='digi.pb.ProgramEntry.pause_duration', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))),
-    _descriptor.FieldDescriptor(
-      name='number_of_runs', full_name='digi.pb.ProgramEntry.number_of_runs', index=3,
-      number=4, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='is_filter_change_required', full_name='digi.pb.ProgramEntry.is_filter_change_required', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=135,
-  serialized_end=296,
-)
-
-
-_CONFIGURATIONENTRY = _descriptor.Descriptor(
-  name='ConfigurationEntry',
-  full_name='digi.pb.ConfigurationEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='digi.pb.ConfigurationEntry.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='type', full_name='digi.pb.ConfigurationEntry.type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='unit', full_name='digi.pb.ConfigurationEntry.unit', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='digi.pb.ConfigurationEntry.value', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _CONFIGURATIONENTRY_ENTRYTYPE,
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=299,
-  serialized_end=520,
-)
 
 
 _PROGRAMCMD = _descriptor.Descriptor(
@@ -629,27 +363,6 @@ _PROGRAMCMD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='start_at', full_name='digi.pb.ProgramCmd.start_at', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))),
-    _descriptor.FieldDescriptor(
-      name='is_prestart_filter', full_name='digi.pb.ProgramCmd.is_prestart_filter', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='program', full_name='digi.pb.ProgramCmd.program', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -663,8 +376,8 @@ _PROGRAMCMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=523,
-  serialized_end=718,
+  serialized_start=62,
+  serialized_end=145,
 )
 
 
@@ -695,92 +408,8 @@ _FILTERCMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=720,
-  serialized_end=814,
-)
-
-
-_USBCMD = _descriptor.Descriptor(
-  name='UsbCmd',
-  full_name='digi.pb.UsbCmd',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='type', full_name='digi.pb.UsbCmd.type', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _USBCMD_TYPE,
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=816,
-  serialized_end=942,
-)
-
-
-_USBINFO = _descriptor.Descriptor(
-  name='UsbInfo',
-  full_name='digi.pb.UsbInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='total_memory_size', full_name='digi.pb.UsbInfo.total_memory_size', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))),
-    _descriptor.FieldDescriptor(
-      name='log_file_size', full_name='digi.pb.UsbInfo.log_file_size', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))),
-    _descriptor.FieldDescriptor(
-      name='climate_file_size', full_name='digi.pb.UsbInfo.climate_file_size', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))),
-    _descriptor.FieldDescriptor(
-      name='wind_file_size', full_name='digi.pb.UsbInfo.wind_file_size', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=945,
-  serialized_end=1079,
+  serialized_start=147,
+  serialized_end=217,
 )
 
 
@@ -806,29 +435,15 @@ _REQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='config_to_update', full_name='digi.pb.Request.config_to_update', index=2,
-      number=10, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='filter_cmd', full_name='digi.pb.Request.filter_cmd', index=3,
-      number=11, type=11, cpp_type=10, label=1,
+      name='filter_cmd', full_name='digi.pb.Request.filter_cmd', index=2,
+      number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='usb_cmd', full_name='digi.pb.Request.usb_cmd', index=4,
-      number=12, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='sys_time', full_name='digi.pb.Request.sys_time', index=5,
-      number=13, type=3, cpp_type=2, label=1,
+      name='sys_time', full_name='digi.pb.Request.sys_time', index=3,
+      number=11, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -845,81 +460,8 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1082,
-  serialized_end=1324,
-)
-
-
-_PROGRAMRUNINFO = _descriptor.Descriptor(
-  name='ProgramRunInfo',
-  full_name='digi.pb.ProgramRunInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='current_cycle', full_name='digi.pb.ProgramRunInfo.current_cycle', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='total_n_of_cycles', full_name='digi.pb.ProgramRunInfo.total_n_of_cycles', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='is_continuous_program', full_name='digi.pb.ProgramRunInfo.is_continuous_program', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='current_run', full_name='digi.pb.ProgramRunInfo.current_run', index=3,
-      number=4, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='total_n_of_runs', full_name='digi.pb.ProgramRunInfo.total_n_of_runs', index=4,
-      number=5, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='estimated_time', full_name='digi.pb.ProgramRunInfo.estimated_time', index=5,
-      number=6, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))),
-    _descriptor.FieldDescriptor(
-      name='elapsed_time', full_name='digi.pb.ProgramRunInfo.elapsed_time', index=6,
-      number=7, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1327,
-  serialized_end=1528,
+  serialized_start=220,
+  serialized_end=373,
 )
 
 
@@ -958,13 +500,6 @@ _FLOWINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\022'))),
-    _descriptor.FieldDescriptor(
-      name='is_estimated', full_name='digi.pb.FlowInfo.is_estimated', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -977,8 +512,8 @@ _FLOWINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1531,
-  serialized_end=1661,
+  serialized_start=375,
+  serialized_end=483,
 )
 
 
@@ -1032,15 +567,8 @@ _DEVICESTATUS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\003'))),
     _descriptor.FieldDescriptor(
-      name='program_run_info', full_name='digi.pb.DeviceStatus.program_run_info', index=6,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='new_log_messages', full_name='digi.pb.DeviceStatus.new_log_messages', index=7,
-      number=8, type=11, cpp_type=10, label=3,
+      name='new_log_messages', full_name='digi.pb.DeviceStatus.new_log_messages', index=6,
+      number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1058,8 +586,8 @@ _DEVICESTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1664,
-  serialized_end=2183,
+  serialized_start=486,
+  serialized_end=890,
 )
 
 
@@ -1104,8 +632,8 @@ _MESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2185,
-  serialized_end=2299,
+  serialized_start=892,
+  serialized_end=1006,
 )
 
 
@@ -1149,8 +677,8 @@ _SYSTEMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2301,
-  serialized_end=2398,
+  serialized_start=1008,
+  serialized_end=1105,
 )
 
 
@@ -1188,8 +716,8 @@ _CMDRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2400,
-  serialized_end=2519,
+  serialized_start=1107,
+  serialized_end=1226,
 )
 
 
@@ -1236,22 +764,8 @@ _RESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='all_config', full_name='digi.pb.Response.all_config', index=5,
-      number=6, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='usb_info', full_name='digi.pb.Response.usb_info', index=6,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='program', full_name='digi.pb.Response.program', index=7,
-      number=8, type=11, cpp_type=10, label=1,
+      name='program', full_name='digi.pb.Response.program', index=5,
+      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1268,30 +782,20 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2522,
-  serialized_end=2854,
+  serialized_start=1229,
+  serialized_end=1476,
 )
 
-_PROGRAM.fields_by_name['entry'].message_type = _PROGRAMENTRY
-_CONFIGURATIONENTRY.fields_by_name['type'].enum_type = _CONFIGURATIONENTRY_ENTRYTYPE
-_CONFIGURATIONENTRY.fields_by_name['unit'].enum_type = _UNIT
-_CONFIGURATIONENTRY_ENTRYTYPE.containing_type = _CONFIGURATIONENTRY
 _PROGRAMCMD.fields_by_name['type'].enum_type = _PROGRAMCMD_TYPE
-_PROGRAMCMD.fields_by_name['program'].message_type = _PROGRAM
 _PROGRAMCMD_TYPE.containing_type = _PROGRAMCMD
 _FILTERCMD.fields_by_name['type'].enum_type = _FILTERCMD_TYPE
 _FILTERCMD_TYPE.containing_type = _FILTERCMD
-_USBCMD.fields_by_name['type'].enum_type = _USBCMD_TYPE
-_USBCMD_TYPE.containing_type = _USBCMD
 _REQUEST.fields_by_name['action_id'].enum_type = _ACTIONID
 _REQUEST.fields_by_name['program_cmd'].message_type = _PROGRAMCMD
-_REQUEST.fields_by_name['config_to_update'].message_type = _CONFIGURATIONENTRY
 _REQUEST.fields_by_name['filter_cmd'].message_type = _FILTERCMD
-_REQUEST.fields_by_name['usb_cmd'].message_type = _USBCMD
 _DEVICESTATUS.fields_by_name['device_state'].enum_type = _DEVICESTATUS_SAMPLERSTATE
 _DEVICESTATUS.fields_by_name['internal_flow_info'].message_type = _FLOWINFO
 _DEVICESTATUS.fields_by_name['ambient_flow_info'].message_type = _FLOWINFO
-_DEVICESTATUS.fields_by_name['program_run_info'].message_type = _PROGRAMRUNINFO
 _DEVICESTATUS.fields_by_name['new_log_messages'].message_type = _MESSAGE
 _DEVICESTATUS_SAMPLERSTATE.containing_type = _DEVICESTATUS
 _MESSAGE.fields_by_name['type'].enum_type = _MESSAGE_TYPE
@@ -1304,18 +808,10 @@ _RESPONSE.fields_by_name['cmd_result'].message_type = _CMDRESULT
 _RESPONSE.fields_by_name['device_status'].message_type = _DEVICESTATUS
 _RESPONSE.fields_by_name['messages'].message_type = _MESSAGE
 _RESPONSE.fields_by_name['sys_info'].message_type = _SYSTEMINFO
-_RESPONSE.fields_by_name['all_config'].message_type = _CONFIGURATIONENTRY
-_RESPONSE.fields_by_name['usb_info'].message_type = _USBINFO
 _RESPONSE.fields_by_name['program'].message_type = _PROGRAMCMD
-DESCRIPTOR.message_types_by_name['Program'] = _PROGRAM
-DESCRIPTOR.message_types_by_name['ProgramEntry'] = _PROGRAMENTRY
-DESCRIPTOR.message_types_by_name['ConfigurationEntry'] = _CONFIGURATIONENTRY
 DESCRIPTOR.message_types_by_name['ProgramCmd'] = _PROGRAMCMD
 DESCRIPTOR.message_types_by_name['FilterCmd'] = _FILTERCMD
-DESCRIPTOR.message_types_by_name['UsbCmd'] = _USBCMD
-DESCRIPTOR.message_types_by_name['UsbInfo'] = _USBINFO
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
-DESCRIPTOR.message_types_by_name['ProgramRunInfo'] = _PROGRAMRUNINFO
 DESCRIPTOR.message_types_by_name['FlowInfo'] = _FLOWINFO
 DESCRIPTOR.message_types_by_name['DeviceStatus'] = _DEVICESTATUS
 DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
@@ -1326,27 +822,6 @@ DESCRIPTOR.enum_types_by_name['constant'] = _CONSTANT
 DESCRIPTOR.enum_types_by_name['Unit'] = _UNIT
 DESCRIPTOR.enum_types_by_name['ActionID'] = _ACTIONID
 DESCRIPTOR.extensions_by_name['unit'] = unit
-
-Program = _reflection.GeneratedProtocolMessageType('Program', (_message.Message,), dict(
-  DESCRIPTOR = _PROGRAM,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.Program)
-  ))
-_sym_db.RegisterMessage(Program)
-
-ProgramEntry = _reflection.GeneratedProtocolMessageType('ProgramEntry', (_message.Message,), dict(
-  DESCRIPTOR = _PROGRAMENTRY,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.ProgramEntry)
-  ))
-_sym_db.RegisterMessage(ProgramEntry)
-
-ConfigurationEntry = _reflection.GeneratedProtocolMessageType('ConfigurationEntry', (_message.Message,), dict(
-  DESCRIPTOR = _CONFIGURATIONENTRY,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.ConfigurationEntry)
-  ))
-_sym_db.RegisterMessage(ConfigurationEntry)
 
 ProgramCmd = _reflection.GeneratedProtocolMessageType('ProgramCmd', (_message.Message,), dict(
   DESCRIPTOR = _PROGRAMCMD,
@@ -1362,33 +837,12 @@ FilterCmd = _reflection.GeneratedProtocolMessageType('FilterCmd', (_message.Mess
   ))
 _sym_db.RegisterMessage(FilterCmd)
 
-UsbCmd = _reflection.GeneratedProtocolMessageType('UsbCmd', (_message.Message,), dict(
-  DESCRIPTOR = _USBCMD,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.UsbCmd)
-  ))
-_sym_db.RegisterMessage(UsbCmd)
-
-UsbInfo = _reflection.GeneratedProtocolMessageType('UsbInfo', (_message.Message,), dict(
-  DESCRIPTOR = _USBINFO,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.UsbInfo)
-  ))
-_sym_db.RegisterMessage(UsbInfo)
-
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
   DESCRIPTOR = _REQUEST,
   __module__ = 'Digi18Com_pb2'
   # @@protoc_insertion_point(class_scope:digi.pb.Request)
   ))
 _sym_db.RegisterMessage(Request)
-
-ProgramRunInfo = _reflection.GeneratedProtocolMessageType('ProgramRunInfo', (_message.Message,), dict(
-  DESCRIPTOR = _PROGRAMRUNINFO,
-  __module__ = 'Digi18Com_pb2'
-  # @@protoc_insertion_point(class_scope:digi.pb.ProgramRunInfo)
-  ))
-_sym_db.RegisterMessage(ProgramRunInfo)
 
 FlowInfo = _reflection.GeneratedProtocolMessageType('FlowInfo', (_message.Message,), dict(
   DESCRIPTOR = _FLOWINFO,
@@ -1437,28 +891,8 @@ google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(unit)
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n(net.envinet.cpu.commco.protocols.digitel'))
-_PROGRAMENTRY.fields_by_name['wait_duration'].has_options = True
-_PROGRAMENTRY.fields_by_name['wait_duration']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))
-_PROGRAMENTRY.fields_by_name['work_duration'].has_options = True
-_PROGRAMENTRY.fields_by_name['work_duration']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))
-_PROGRAMENTRY.fields_by_name['pause_duration'].has_options = True
-_PROGRAMENTRY.fields_by_name['pause_duration']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))
-_PROGRAMCMD.fields_by_name['start_at'].has_options = True
-_PROGRAMCMD.fields_by_name['start_at']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
-_USBINFO.fields_by_name['total_memory_size'].has_options = True
-_USBINFO.fields_by_name['total_memory_size']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))
-_USBINFO.fields_by_name['log_file_size'].has_options = True
-_USBINFO.fields_by_name['log_file_size']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))
-_USBINFO.fields_by_name['climate_file_size'].has_options = True
-_USBINFO.fields_by_name['climate_file_size']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))
-_USBINFO.fields_by_name['wind_file_size'].has_options = True
-_USBINFO.fields_by_name['wind_file_size']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\023'))
 _REQUEST.fields_by_name['sys_time'].has_options = True
 _REQUEST.fields_by_name['sys_time']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
-_PROGRAMRUNINFO.fields_by_name['estimated_time'].has_options = True
-_PROGRAMRUNINFO.fields_by_name['estimated_time']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))
-_PROGRAMRUNINFO.fields_by_name['elapsed_time'].has_options = True
-_PROGRAMRUNINFO.fields_by_name['elapsed_time']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\004'))
 _FLOWINFO.fields_by_name['temperature'].has_options = True
 _FLOWINFO.fields_by_name['temperature']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\006'))
 _FLOWINFO.fields_by_name['pressure'].has_options = True
