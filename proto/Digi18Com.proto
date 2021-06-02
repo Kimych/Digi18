@@ -5,8 +5,12 @@
 * @Company Envinet GmbH
 *
 * Created on: 19.01.2018
-* Update on: 02.01.2021
+* Update on: 02.06.2021
 *
+* V7 02.06.2021 : Including: Set/Get FlowCmd, Set/Get InletHeating, Pump Capacity and ErrorCode in DeviceStatus,
+*                 set filter changer to automatic mode remotely and magazine discharge:  included in FilterCmd
+                  set pump control remotely:  included in PumpCmd
+				  set/get filter ID: included in FilterID
 * V6 21.05.2021 : remove unused items
 * V5 02.02.2021 : fix timestamp type; and a lot of typos
 * V4 10.12.2020 : Including SamplingTime in DeviceStatus
@@ -26,7 +30,7 @@ option java_package = "net.envinet.cpu.commco.protocols.digitel";
 // Protocol version
 ///////////////////////////////////////////////////
 enum constant {
-  PROTOCOL_VERSION = 6;
+  PROTOCOL_VERSION = 7;
 }
 
 ///////////////////////////////////////////////////
@@ -78,6 +82,13 @@ enum ActionID {
   FILTER_CMD = 5; // filter change action
   REPEAT = 6; // force sender to repeat last telegram (Request or Response)
   TIME_SYNC = 7; // set Sampler system time
+  SET_FLOW = 8; // set flow rate
+  GET_FLOW = 9;	// get flow rate
+  SET_INLET_HEATING = 10; // set inlet heating settings
+  GET_INLET_HEATING = 11; // get inlet heating settings
+  PUMP_CMD = 12; // pump control action
+  SET_FILTERID = 13; // set filter ID
+  GET_FILTERID = 14; // get filter ID
 }
 
 ///////////////////////////////////////////////////
@@ -99,13 +110,43 @@ message ProgramCmd {
   optional Type type = 1; // type of command
 }
 
+message FilterID {
+  optional uint32 CurrentFilterID = 1;		   //current filterID of the filter in the sampling chamber (read only)
+  optional uint32 NextFilterID = 2;			   //filterID of the next filter in the magazine (lowest position in the magazine), read/write
+  optional uint32 NbOfFilterInMagazine = 3;	   //number of filters in the left magazine, read/write
+}
+
 message FilterCmd {
   enum Type {
-    CHANGE = 1; // change current filter
+    CHANGE = 1;    // exchange filter
+	AUTOMATIC = 2; // set filter changer to automatic mode if changer is switched off manually
+	OFF = 3;       // interrupt current filter exchange and switch off filter changer
+	DISCHARGE = 4; //discharge complete magazine
   }
   optional Type type = 1; // type of command
 }
 
+message PumpCmd {
+  enum Type {
+	AUTOMATIC = 1; // set pump control to automatic mode if pump is switched off manually
+	OFF = 2;       // turn of the pump for service or test
+  }
+  optional Type type = 1; // type of command
+}
+
+message FlowCmd {
+  optional float flow_rate = 1 [(unit) = L_MIN]; // flow rate
+}
+
+message InletHeatingCmd {
+  enum Type {
+    ON = 1; // inlet heating ON
+    OFF = 2; // inlet heating OFF
+  }
+  optional Type type = 1; // type of command
+  optional float set_temperature = 2 [(unit) = CELSIUS_DEGREE]; // set temperature from inlet heating
+  optional float curr_temperature = 3 [(unit) = CELSIUS_DEGREE]; // current inlet temperature, measured from the sampler
+}
 
 message Request {
   optional ActionID action_id = 1;    // requested action ID
@@ -115,6 +156,10 @@ message Request {
   optional ProgramCmd program_cmd = 9; // action id = PROGRAM_CMD
   optional FilterCmd filter_cmd = 10; // action id = FILTER_CMD
   optional int64 sys_time = 11 [(unit) = TIMESTAMP]; // action ID = TIME_SYNC
+  optional FlowCmd SetFlow = 12; // action ID = SET_FLOW
+  optional InletHeatingCmd SetInletHeating = 13; // action ID = SET_INLET_HEATING
+  optional PumpCmd pump_cmd = 14; // action id = PUMP_CMD
+  optional FilterID SetFilterID = 15; // action ID = GET_FILTERID
 }
 
 /////////////////////////////////////////////////
@@ -144,8 +189,57 @@ message DeviceStatus {
   optional FlowInfo ambient_flow_info = 4;  //  ambient flow meter statistics, if not connected -  estimated values should be represented
   optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
   optional uint32 SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
-  repeated Message new_log_messages = 7; // list of last unread messages
+  optional float PumpCapacity = 7 [(unit) = PERCENTAGE];  //current pump capacity in [%]
+  optional int64 ErrorCode = 8;
+  repeated Message new_log_messages = 9; // list of last unread messages
 }
+
+/*************** SIRA Sampler ErrorCode *********************
+
+  Bit 63: filter changer jammed
+  Bit 62: blower overload warning
+  Bit 61: magazine empty
+  Bit 60: filter changer manual mode
+  Bit 59: blower overload program stop
+  Bit 58: filter exchange not sucessful
+  Bit 57: filter changer motor timeout
+  Bit 56: - not used with SIRA configuration
+  Bit 55: - not used with SIRA configuration
+  Bit 54: - not used with SIRA configuration
+  Bit 53: - not used with SIRA configuration
+  Bit 52: - not used with SIRA configuration
+  Bit 51: - not used with SIRA configuration
+  Bit 50: - not used with SIRA configuration
+  Bit 49: - not used with SIRA configuration
+  Bit 48: blower manually turned off
+  Bit 47: - not used with SIRA configuration
+  Bit 46: internal temperature/pressure sensor error
+  Bit 45: ambient temperature/pressure sensor error
+  Bit 44: - not used with SIRA configuration
+  Bit 43: - not used with SIRA configuration
+  Bit 42: - not used with SIRA configuration
+  Bit 41: - not used with SIRA configuration
+  Bit 40: - not used with SIRA configuration
+  Bit 39: - not used with SIRA configuration
+  Bit 38: - not used with SIRA configuration
+  Bit 37: - not used with SIRA configuration
+  Bit 36: - not used with SIRA configuration
+  Bit 35: - not used with SIRA configuration
+  Bit 34: clock backup battery LOW
+  Bit 33: clock backup battery EMPTY
+  Bit 32: - not used with SIRA configuration
+  Bit 31: venturi / flow meter error
+  Bit 30: - not used with SIRA configuration
+  Bit 29: - not used with SIRA configuration
+  Bit 28: - not used with SIRA configuration
+  Bit 27: - not used with SIRA configuration
+  Bit 26: - not used with SIRA configuration
+  Bit 25: - not used with SIRA configuration
+  Bit 24-0: reserved
+
+************************************************************/
+
+
 
 message Message {
   optional int64 timestamp = 1 [(unit) = TIMESTAMP]; // timestamp of message
@@ -179,20 +273,7 @@ message Response {
   repeated Message messages = 4; // action id = LOG_MESSAGES
   optional SystemInfo sys_info = 5; // action id = SYS_INFO
   optional ProgramCmd program = 6; // action id = PROGRAM_CMD
+  optional FlowCmd GetFlow = 7; // action ID = GET_INLET_HEATING
+  optional InletHeatingCmd GetInletHeating = 8; // action ID = GET_INLET_HEATING
+  optional FilterID GetFilterID = 9; // action ID = GET_FILTERID
 }
-
-/*TODO
-* check temperature sensors (in configuration)
-* check pressure sensors (in configuration)
-* flow check
-* Tightness Test
-*
-*    message MCalibrationCmd {
-*    enum Type {
-*         AMBIENT_AND_FILTER_TEMP = 1; //
-*         STORAGE_TEMP = 2; //
-*    }
-*    optional Type type = 1; // type of command
-* }
-*
-*/
