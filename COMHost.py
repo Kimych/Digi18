@@ -74,8 +74,17 @@ def send_status_req(serial):
     serial.write(wrap_content(start))
 
 
+def send_filter_status_req(serial):
+    # request status data
+    request = Digi18Com_pb2.Request()
+    request.action_id = Digi18Com_pb2.GET_FILTERID
+    start = request.SerializeToString()
+    # write to the COM
+    serial.write(wrap_content(start))
+
+
 while True:
-    print(" s - start program; f - finish program; c - filter change; otherwise - status request")
+    print(" s - start program; f - finish program; c - filter change; l - filter status request; otherwise - status request")
     # default command is - STATUS request
     user_input = "st"
     try:
@@ -94,6 +103,9 @@ while True:
     elif user_input == "c":
         print("sending FILTER CHANGE...")
         send_filter_cmd(ser, Digi18Com_pb2.FilterCmd.CHANGE)
+    elif user_input == "l":
+        print("sending FILTER STATUS request...")
+        send_filter_status_req(ser)
     else:
         print("sending STATUS request...")
         send_status_req(ser)
