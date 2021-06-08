@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Digi18Com.proto',
   package='digi.pb',
   syntax='proto2',
-  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"S\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\"\x1d\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\"F\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"\x12\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\"\x99\x01\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12&\n\nfilter_cmd\x18\n \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12\x16\n\x08sys_time\x18\x0b \x01(\x03\x42\x04\x80\xb5\x18\x02\"l\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x06volume\x18\x04 \x01(\x02\x42\x04\x80\xb5\x18\x12\"\x94\x03\n\x0c\x44\x65viceStatus\x12\x38\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32\".digi.pb.DeviceStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x1a\n\x0cSamplingTime\x18\x06 \x01(\rB\x04\x80\xb5\x18\x03\x12*\n\x10new_log_messages\x18\x07 \x03(\x0b\x32\x10.digi.pb.Message\"s\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WORK\x10\x03\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x04\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\x05\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xf7\x01\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12,\n\rdevice_status\x18\x03 \x01(\x0b\x32\x15.digi.pb.DeviceStatus\x12\"\n\x08messages\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x05 \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12$\n\x07program\x18\x06 \x01(\x0b\x32\x13.digi.pb.ProgramCmd* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x06*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERCENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*z\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x0f\n\x0bPROGRAM_CMD\x10\x04\x12\x0e\n\nFILTER_CMD\x10\x05\x12\n\n\x06REPEAT\x10\x06\x12\r\n\tTIME_SYNC\x10\x07:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
+  serialized_pb=_b('\n\x0f\x44igi18Com.proto\x12\x07\x64igi.pb\x1a google/protobuf/descriptor.proto\"S\n\nProgramCmd\x12&\n\x04type\x18\x01 \x01(\x0e\x32\x18.digi.pb.ProgramCmd.Type\"\x1d\n\x04Type\x12\t\n\x05START\x10\x01\x12\n\n\x06\x46INISH\x10\x02\"W\n\x08\x46ilterID\x12\x17\n\x0f\x43urrentFilterID\x18\x01 \x01(\r\x12\x14\n\x0cNextFilterID\x18\x02 \x01(\r\x12\x1c\n\x14NbOfFilterInMagazine\x18\x03 \x01(\r\"m\n\tFilterCmd\x12%\n\x04type\x18\x01 \x01(\x0e\x32\x17.digi.pb.FilterCmd.Type\"9\n\x04Type\x12\n\n\x06\x43HANGE\x10\x01\x12\r\n\tAUTOMATIC\x10\x02\x12\x07\n\x03OFF\x10\x03\x12\r\n\tDISCHARGE\x10\x04\"N\n\x07PumpCmd\x12#\n\x04type\x18\x01 \x01(\x0e\x32\x15.digi.pb.PumpCmd.Type\"\x1e\n\x04Type\x12\r\n\tAUTOMATIC\x10\x01\x12\x07\n\x03OFF\x10\x02\"\"\n\x07\x46lowCmd\x12\x17\n\tflow_rate\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x0b\"\x96\x01\n\x0fInletHeatingCmd\x12+\n\x04type\x18\x01 \x01(\x0e\x32\x1d.digi.pb.InletHeatingCmd.Type\x12\x1d\n\x0fset_temperature\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x1e\n\x10\x63urr_temperature\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x06\"\x17\n\x04Type\x12\x06\n\x02ON\x10\x01\x12\x07\n\x03OFF\x10\x02\"\xbb\x02\n\x07Request\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12(\n\x0bprogram_cmd\x18\t \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12&\n\nfilter_cmd\x18\n \x01(\x0b\x32\x12.digi.pb.FilterCmd\x12\x16\n\x08sys_time\x18\x0b \x01(\x03\x42\x04\x80\xb5\x18\x02\x12!\n\x07SetFlow\x18\x0c \x01(\x0b\x32\x10.digi.pb.FlowCmd\x12\x31\n\x0fSetInletHeating\x18\r \x01(\x0b\x32\x18.digi.pb.InletHeatingCmd\x12\"\n\x08pump_cmd\x18\x0e \x01(\x0b\x32\x10.digi.pb.PumpCmd\x12&\n\x0bSetFilterID\x18\x0f \x01(\x0b\x32\x11.digi.pb.FilterID\"l\n\x08\x46lowInfo\x12\x19\n\x0btemperature\x18\x01 \x01(\x02\x42\x04\x80\xb5\x18\x06\x12\x16\n\x08pressure\x18\x02 \x01(\x02\x42\x04\x80\xb5\x18\x08\x12\x17\n\tflow_rate\x18\x03 \x01(\x02\x42\x04\x80\xb5\x18\x0b\x12\x14\n\x06volume\x18\x04 \x01(\x02\x42\x04\x80\xb5\x18\x12\"\xc3\x03\n\x0c\x44\x65viceStatus\x12\x38\n\x0c\x64\x65vice_state\x18\x01 \x01(\x0e\x32\".digi.pb.DeviceStatus.SamplerState\x12\x17\n\ttimestamp\x18\x02 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12-\n\x12internal_flow_info\x18\x03 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12,\n\x11\x61mbient_flow_info\x18\x04 \x01(\x0b\x32\x11.digi.pb.FlowInfo\x12\x17\n\x0f\x43urFilterNumber\x18\x05 \x01(\r\x12\x1a\n\x0cSamplingTime\x18\x06 \x01(\rB\x04\x80\xb5\x18\x03\x12\x1a\n\x0cPumpCapacity\x18\x07 \x01(\x02\x42\x04\x80\xb5\x18\x0c\x12\x11\n\tErrorCode\x18\x08 \x01(\x03\x12*\n\x10new_log_messages\x18\t \x03(\x0b\x32\x10.digi.pb.Message\"s\n\x0cSamplerState\x12\x0b\n\x07UNKNOWN\x10\x01\x12\x12\n\x0eINITIALISATION\x10\x02\x12\x08\n\x04WORK\x10\x03\x12\x13\n\x0fPROGRAM_EXPIRED\x10\x04\x12\x18\n\x14\x46ILTER_CHANGE_ACTIVE\x10\x05\x12\t\n\x05\x45RROR\x10\x0f\"r\n\x07Message\x12\x17\n\ttimestamp\x18\x01 \x01(\x03\x42\x04\x80\xb5\x18\x02\x12\x0c\n\x04text\x18\x02 \x01(\t\x12#\n\x04type\x18\x03 \x01(\x0e\x32\x15.digi.pb.Message.Type\"\x1b\n\x04Type\x12\x08\n\x04INFO\x10\x01\x12\t\n\x05\x45RROR\x10\x02\"a\n\nSystemInfo\x12\x12\n\nsw_version\x18\x01 \x01(\t\x12\x1e\n\x10pump_on_duration\x18\x02 \x01(\rB\x04\x80\xb5\x18\x04\x12\x1f\n\x11power_on_duration\x18\x03 \x01(\rB\x04\x80\xb5\x18\x04\"w\n\tCmdResult\x12)\n\x06status\x18\x01 \x01(\x0e\x32\x19.digi.pb.CmdResult.Status\x12#\n\terror_msg\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\"\x1a\n\x06Status\x12\x06\n\x02OK\x10\x01\x12\x08\n\x04\x46\x41IL\x10\x02\"\xf5\x02\n\x08Response\x12$\n\taction_id\x18\x01 \x01(\x0e\x32\x11.digi.pb.ActionID\x12&\n\ncmd_result\x18\x02 \x01(\x0b\x32\x12.digi.pb.CmdResult\x12,\n\rdevice_status\x18\x03 \x01(\x0b\x32\x15.digi.pb.DeviceStatus\x12\"\n\x08messages\x18\x04 \x03(\x0b\x32\x10.digi.pb.Message\x12%\n\x08sys_info\x18\x05 \x01(\x0b\x32\x13.digi.pb.SystemInfo\x12$\n\x07program\x18\x06 \x01(\x0b\x32\x13.digi.pb.ProgramCmd\x12!\n\x07GetFlow\x18\x07 \x01(\x0b\x32\x10.digi.pb.FlowCmd\x12\x31\n\x0fGetInletHeating\x18\x08 \x01(\x0b\x32\x18.digi.pb.InletHeatingCmd\x12&\n\x0bGetFilterID\x18\t \x01(\x0b\x32\x11.digi.pb.FilterID* \n\x08\x63onstant\x12\x14\n\x10PROTOCOL_VERSION\x10\x07*\x92\x02\n\x04Unit\x12\x0b\n\x07NO_UNIT\x10\x01\x12\r\n\tTIMESTAMP\x10\x02\x12\n\n\x06SECOND\x10\x03\x12\n\n\x06MINUTE\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\x12\n\x0e\x43\x45LSIUS_DEGREE\x10\x06\x12\x11\n\rKELVIN_DEGREE\x10\x07\x12\x07\n\x03HPA\x10\x08\x12\x07\n\x03KPA\x10\t\x12\x08\n\x04MBAR\x10\n\x12\t\n\x05L_MIN\x10\x0b\x12\x0e\n\nPERCENTAGE\x10\x0c\x12\x0f\n\x0b\x43UBIC_METER\x10\r\x12\x16\n\x12\x43UBIC_METER_IN_STD\x10\x0e\x12\n\n\x06\x44\x45GREE\x10\x0f\x12\x07\n\x03\x42PS\x10\x10\x12\x0e\n\nMILLIMETER\x10\x11\x12\t\n\x05LITER\x10\x12\x12\x05\n\x01\x42\x10\x13\x12\x06\n\x02KB\x10\x14\x12\x06\n\x02MB\x10\x15*\xf6\x01\n\x08\x41\x63tionID\x12\x12\n\x0eSAMPLER_STATUS\x10\x01\x12\x10\n\x0cLOG_MESSAGES\x10\x02\x12\x0c\n\x08SYS_INFO\x10\x03\x12\x0f\n\x0bPROGRAM_CMD\x10\x04\x12\x0e\n\nFILTER_CMD\x10\x05\x12\n\n\x06REPEAT\x10\x06\x12\r\n\tTIME_SYNC\x10\x07\x12\x0c\n\x08SET_FLOW\x10\x08\x12\x0c\n\x08GET_FLOW\x10\t\x12\x15\n\x11SET_INLET_HEATING\x10\n\x12\x15\n\x11GET_INLET_HEATING\x10\x0b\x12\x0c\n\x08PUMP_CMD\x10\x0c\x12\x10\n\x0cSET_FILTERID\x10\r\x12\x10\n\x0cGET_FILTERID\x10\x0e:<\n\x04unit\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\r.digi.pb.UnitB*\n(net.envinet.cpu.commco.protocols.digitel')
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -33,14 +33,14 @@ _CONSTANT = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='PROTOCOL_VERSION', index=0, number=6,
+      name='PROTOCOL_VERSION', index=0, number=7,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1478,
-  serialized_end=1510,
+  serialized_start=2210,
+  serialized_end=2242,
 )
 _sym_db.RegisterEnumDescriptor(_CONSTANT)
 
@@ -138,8 +138,8 @@ _UNIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1513,
-  serialized_end=1787,
+  serialized_start=2245,
+  serialized_end=2519,
 )
 _sym_db.RegisterEnumDescriptor(_UNIT)
 
@@ -178,16 +178,44 @@ _ACTIONID = _descriptor.EnumDescriptor(
       name='TIME_SYNC', index=6, number=7,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET_FLOW', index=7, number=8,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GET_FLOW', index=8, number=9,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET_INLET_HEATING', index=9, number=10,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GET_INLET_HEATING', index=10, number=11,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PUMP_CMD', index=11, number=12,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET_FILTERID', index=12, number=13,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GET_FILTERID', index=13, number=14,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1789,
-  serialized_end=1911,
+  serialized_start=2522,
+  serialized_end=2768,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIONID)
 
 ActionID = enum_type_wrapper.EnumTypeWrapper(_ACTIONID)
-PROTOCOL_VERSION = 6
+PROTOCOL_VERSION = 7
 NO_UNIT = 1
 TIMESTAMP = 2
 SECOND = 3
@@ -216,6 +244,13 @@ PROGRAM_CMD = 4
 FILTER_CMD = 5
 REPEAT = 6
 TIME_SYNC = 7
+SET_FLOW = 8
+GET_FLOW = 9
+SET_INLET_HEATING = 10
+GET_INLET_HEATING = 11
+PUMP_CMD = 12
+SET_FILTERID = 13
+GET_FILTERID = 14
 
 UNIT_FIELD_NUMBER = 50000
 unit = _descriptor.FieldDescriptor(
@@ -258,13 +293,69 @@ _FILTERCMD_TYPE = _descriptor.EnumDescriptor(
       name='CHANGE', index=0, number=1,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AUTOMATIC', index=1, number=2,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OFF', index=2, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DISCHARGE', index=3, number=4,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=199,
-  serialized_end=217,
+  serialized_start=288,
+  serialized_end=345,
 )
 _sym_db.RegisterEnumDescriptor(_FILTERCMD_TYPE)
+
+_PUMPCMD_TYPE = _descriptor.EnumDescriptor(
+  name='Type',
+  full_name='digi.pb.PumpCmd.Type',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='AUTOMATIC', index=0, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OFF', index=1, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=395,
+  serialized_end=425,
+)
+_sym_db.RegisterEnumDescriptor(_PUMPCMD_TYPE)
+
+_INLETHEATINGCMD_TYPE = _descriptor.EnumDescriptor(
+  name='Type',
+  full_name='digi.pb.InletHeatingCmd.Type',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ON', index=0, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OFF', index=1, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=591,
+  serialized_end=614,
+)
+_sym_db.RegisterEnumDescriptor(_INLETHEATINGCMD_TYPE)
 
 _DEVICESTATUS_SAMPLERSTATE = _descriptor.EnumDescriptor(
   name='SamplerState',
@@ -299,8 +390,8 @@ _DEVICESTATUS_SAMPLERSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=775,
-  serialized_end=890,
+  serialized_start=1381,
+  serialized_end=1496,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICESTATUS_SAMPLERSTATE)
 
@@ -321,8 +412,8 @@ _MESSAGE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=979,
-  serialized_end=1006,
+  serialized_start=1585,
+  serialized_end=1612,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_TYPE)
 
@@ -343,8 +434,8 @@ _CMDRESULT_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1200,
-  serialized_end=1226,
+  serialized_start=1806,
+  serialized_end=1832,
 )
 _sym_db.RegisterEnumDescriptor(_CMDRESULT_STATUS)
 
@@ -381,6 +472,51 @@ _PROGRAMCMD = _descriptor.Descriptor(
 )
 
 
+_FILTERID = _descriptor.Descriptor(
+  name='FilterID',
+  full_name='digi.pb.FilterID',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='CurrentFilterID', full_name='digi.pb.FilterID.CurrentFilterID', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='NextFilterID', full_name='digi.pb.FilterID.NextFilterID', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='NbOfFilterInMagazine', full_name='digi.pb.FilterID.NbOfFilterInMagazine', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=147,
+  serialized_end=234,
+)
+
+
 _FILTERCMD = _descriptor.Descriptor(
   name='FilterCmd',
   full_name='digi.pb.FilterCmd',
@@ -408,8 +544,117 @@ _FILTERCMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=147,
-  serialized_end=217,
+  serialized_start=236,
+  serialized_end=345,
+)
+
+
+_PUMPCMD = _descriptor.Descriptor(
+  name='PumpCmd',
+  full_name='digi.pb.PumpCmd',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='digi.pb.PumpCmd.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _PUMPCMD_TYPE,
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=347,
+  serialized_end=425,
+)
+
+
+_FLOWCMD = _descriptor.Descriptor(
+  name='FlowCmd',
+  full_name='digi.pb.FlowCmd',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='flow_rate', full_name='digi.pb.FlowCmd.flow_rate', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\013'))),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=427,
+  serialized_end=461,
+)
+
+
+_INLETHEATINGCMD = _descriptor.Descriptor(
+  name='InletHeatingCmd',
+  full_name='digi.pb.InletHeatingCmd',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='digi.pb.InletHeatingCmd.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='set_temperature', full_name='digi.pb.InletHeatingCmd.set_temperature', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\006'))),
+    _descriptor.FieldDescriptor(
+      name='curr_temperature', full_name='digi.pb.InletHeatingCmd.curr_temperature', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\006'))),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _INLETHEATINGCMD_TYPE,
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=464,
+  serialized_end=614,
 )
 
 
@@ -448,6 +693,34 @@ _REQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))),
+    _descriptor.FieldDescriptor(
+      name='SetFlow', full_name='digi.pb.Request.SetFlow', index=4,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='SetInletHeating', full_name='digi.pb.Request.SetInletHeating', index=5,
+      number=13, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='pump_cmd', full_name='digi.pb.Request.pump_cmd', index=6,
+      number=14, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='SetFilterID', full_name='digi.pb.Request.SetFilterID', index=7,
+      number=15, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -460,8 +733,8 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=220,
-  serialized_end=373,
+  serialized_start=617,
+  serialized_end=932,
 )
 
 
@@ -512,8 +785,8 @@ _FLOWINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=375,
-  serialized_end=483,
+  serialized_start=934,
+  serialized_end=1042,
 )
 
 
@@ -567,8 +840,22 @@ _DEVICESTATUS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\003'))),
     _descriptor.FieldDescriptor(
-      name='new_log_messages', full_name='digi.pb.DeviceStatus.new_log_messages', index=6,
-      number=7, type=11, cpp_type=10, label=3,
+      name='PumpCapacity', full_name='digi.pb.DeviceStatus.PumpCapacity', index=6,
+      number=7, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\014'))),
+    _descriptor.FieldDescriptor(
+      name='ErrorCode', full_name='digi.pb.DeviceStatus.ErrorCode', index=7,
+      number=8, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='new_log_messages', full_name='digi.pb.DeviceStatus.new_log_messages', index=8,
+      number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -586,8 +873,8 @@ _DEVICESTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=486,
-  serialized_end=890,
+  serialized_start=1045,
+  serialized_end=1496,
 )
 
 
@@ -632,8 +919,8 @@ _MESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=892,
-  serialized_end=1006,
+  serialized_start=1498,
+  serialized_end=1612,
 )
 
 
@@ -677,8 +964,8 @@ _SYSTEMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1008,
-  serialized_end=1105,
+  serialized_start=1614,
+  serialized_end=1711,
 )
 
 
@@ -716,8 +1003,8 @@ _CMDRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1107,
-  serialized_end=1226,
+  serialized_start=1713,
+  serialized_end=1832,
 )
 
 
@@ -770,6 +1057,27 @@ _RESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='GetFlow', full_name='digi.pb.Response.GetFlow', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='GetInletHeating', full_name='digi.pb.Response.GetInletHeating', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='GetFilterID', full_name='digi.pb.Response.GetFilterID', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -782,17 +1090,25 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1229,
-  serialized_end=1476,
+  serialized_start=1835,
+  serialized_end=2208,
 )
 
 _PROGRAMCMD.fields_by_name['type'].enum_type = _PROGRAMCMD_TYPE
 _PROGRAMCMD_TYPE.containing_type = _PROGRAMCMD
 _FILTERCMD.fields_by_name['type'].enum_type = _FILTERCMD_TYPE
 _FILTERCMD_TYPE.containing_type = _FILTERCMD
+_PUMPCMD.fields_by_name['type'].enum_type = _PUMPCMD_TYPE
+_PUMPCMD_TYPE.containing_type = _PUMPCMD
+_INLETHEATINGCMD.fields_by_name['type'].enum_type = _INLETHEATINGCMD_TYPE
+_INLETHEATINGCMD_TYPE.containing_type = _INLETHEATINGCMD
 _REQUEST.fields_by_name['action_id'].enum_type = _ACTIONID
 _REQUEST.fields_by_name['program_cmd'].message_type = _PROGRAMCMD
 _REQUEST.fields_by_name['filter_cmd'].message_type = _FILTERCMD
+_REQUEST.fields_by_name['SetFlow'].message_type = _FLOWCMD
+_REQUEST.fields_by_name['SetInletHeating'].message_type = _INLETHEATINGCMD
+_REQUEST.fields_by_name['pump_cmd'].message_type = _PUMPCMD
+_REQUEST.fields_by_name['SetFilterID'].message_type = _FILTERID
 _DEVICESTATUS.fields_by_name['device_state'].enum_type = _DEVICESTATUS_SAMPLERSTATE
 _DEVICESTATUS.fields_by_name['internal_flow_info'].message_type = _FLOWINFO
 _DEVICESTATUS.fields_by_name['ambient_flow_info'].message_type = _FLOWINFO
@@ -809,8 +1125,15 @@ _RESPONSE.fields_by_name['device_status'].message_type = _DEVICESTATUS
 _RESPONSE.fields_by_name['messages'].message_type = _MESSAGE
 _RESPONSE.fields_by_name['sys_info'].message_type = _SYSTEMINFO
 _RESPONSE.fields_by_name['program'].message_type = _PROGRAMCMD
+_RESPONSE.fields_by_name['GetFlow'].message_type = _FLOWCMD
+_RESPONSE.fields_by_name['GetInletHeating'].message_type = _INLETHEATINGCMD
+_RESPONSE.fields_by_name['GetFilterID'].message_type = _FILTERID
 DESCRIPTOR.message_types_by_name['ProgramCmd'] = _PROGRAMCMD
+DESCRIPTOR.message_types_by_name['FilterID'] = _FILTERID
 DESCRIPTOR.message_types_by_name['FilterCmd'] = _FILTERCMD
+DESCRIPTOR.message_types_by_name['PumpCmd'] = _PUMPCMD
+DESCRIPTOR.message_types_by_name['FlowCmd'] = _FLOWCMD
+DESCRIPTOR.message_types_by_name['InletHeatingCmd'] = _INLETHEATINGCMD
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['FlowInfo'] = _FLOWINFO
 DESCRIPTOR.message_types_by_name['DeviceStatus'] = _DEVICESTATUS
@@ -830,12 +1153,40 @@ ProgramCmd = _reflection.GeneratedProtocolMessageType('ProgramCmd', (_message.Me
   ))
 _sym_db.RegisterMessage(ProgramCmd)
 
+FilterID = _reflection.GeneratedProtocolMessageType('FilterID', (_message.Message,), dict(
+  DESCRIPTOR = _FILTERID,
+  __module__ = 'Digi18Com_pb2'
+  # @@protoc_insertion_point(class_scope:digi.pb.FilterID)
+  ))
+_sym_db.RegisterMessage(FilterID)
+
 FilterCmd = _reflection.GeneratedProtocolMessageType('FilterCmd', (_message.Message,), dict(
   DESCRIPTOR = _FILTERCMD,
   __module__ = 'Digi18Com_pb2'
   # @@protoc_insertion_point(class_scope:digi.pb.FilterCmd)
   ))
 _sym_db.RegisterMessage(FilterCmd)
+
+PumpCmd = _reflection.GeneratedProtocolMessageType('PumpCmd', (_message.Message,), dict(
+  DESCRIPTOR = _PUMPCMD,
+  __module__ = 'Digi18Com_pb2'
+  # @@protoc_insertion_point(class_scope:digi.pb.PumpCmd)
+  ))
+_sym_db.RegisterMessage(PumpCmd)
+
+FlowCmd = _reflection.GeneratedProtocolMessageType('FlowCmd', (_message.Message,), dict(
+  DESCRIPTOR = _FLOWCMD,
+  __module__ = 'Digi18Com_pb2'
+  # @@protoc_insertion_point(class_scope:digi.pb.FlowCmd)
+  ))
+_sym_db.RegisterMessage(FlowCmd)
+
+InletHeatingCmd = _reflection.GeneratedProtocolMessageType('InletHeatingCmd', (_message.Message,), dict(
+  DESCRIPTOR = _INLETHEATINGCMD,
+  __module__ = 'Digi18Com_pb2'
+  # @@protoc_insertion_point(class_scope:digi.pb.InletHeatingCmd)
+  ))
+_sym_db.RegisterMessage(InletHeatingCmd)
 
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
   DESCRIPTOR = _REQUEST,
@@ -891,6 +1242,12 @@ google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(unit)
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n(net.envinet.cpu.commco.protocols.digitel'))
+_FLOWCMD.fields_by_name['flow_rate'].has_options = True
+_FLOWCMD.fields_by_name['flow_rate']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\013'))
+_INLETHEATINGCMD.fields_by_name['set_temperature'].has_options = True
+_INLETHEATINGCMD.fields_by_name['set_temperature']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\006'))
+_INLETHEATINGCMD.fields_by_name['curr_temperature'].has_options = True
+_INLETHEATINGCMD.fields_by_name['curr_temperature']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\006'))
 _REQUEST.fields_by_name['sys_time'].has_options = True
 _REQUEST.fields_by_name['sys_time']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
 _FLOWINFO.fields_by_name['temperature'].has_options = True
@@ -905,6 +1262,8 @@ _DEVICESTATUS.fields_by_name['timestamp'].has_options = True
 _DEVICESTATUS.fields_by_name['timestamp']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
 _DEVICESTATUS.fields_by_name['SamplingTime'].has_options = True
 _DEVICESTATUS.fields_by_name['SamplingTime']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\003'))
+_DEVICESTATUS.fields_by_name['PumpCapacity'].has_options = True
+_DEVICESTATUS.fields_by_name['PumpCapacity']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\014'))
 _MESSAGE.fields_by_name['timestamp'].has_options = True
 _MESSAGE.fields_by_name['timestamp']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\200\265\030\002'))
 _SYSTEMINFO.fields_by_name['pump_on_duration'].has_options = True
