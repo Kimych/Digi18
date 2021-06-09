@@ -5,8 +5,9 @@
 * @Company Envinet GmbH
 *
 * Created on: 19.01.2018
-* Update on: 02.06.2021
+* Update on: 08.06.2021
 *
+* V8 08.06.2021 : NbOfFilterInMagazine field included into DeviceStatus message
 * V7 02.06.2021 : Including: Set/Get FlowCmd, Set/Get InletHeating, Pump Capacity and ErrorCode in DeviceStatus,
 *                 set filter changer to automatic mode remotely and magazine discharge:  included in FilterCmd
                   set pump control remotely:  included in PumpCmd
@@ -30,7 +31,7 @@ option java_package = "net.envinet.cpu.commco.protocols.digitel";
 // Protocol version
 ///////////////////////////////////////////////////
 enum constant {
-  PROTOCOL_VERSION = 7;
+  PROTOCOL_VERSION = 8;
 }
 
 ///////////////////////////////////////////////////
@@ -190,8 +191,9 @@ message DeviceStatus {
   optional uint32 CurFilterNumber = 5;   //current filter number in sampling chamber
   optional uint32 SamplingTime = 6 [(unit) = SECOND];	//current sampling time in [s]
   optional float PumpCapacity = 7 [(unit) = PERCENTAGE];  //current pump capacity in [%]
-  optional int64 ErrorCode = 8;
-  repeated Message new_log_messages = 9; // list of last unread messages
+  optional uint32 NbOfFilterInMagazine = 8;
+  optional int64 ErrorCode = 9;
+  repeated Message new_log_messages = 10; // list of last unread messages
 }
 
 /*************** SIRA Sampler ErrorCode *********************
